@@ -1,0 +1,100 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//026.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 026.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+
+</head>
+
+
+<body>
+
+   <h1> 026.html - Detectar si JavaScript esta Habilitado utilizando una Clase </h1>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <ul id="lista1">
+      <li> Viejo item 1 </li>
+      <li> Viejo item 2 </li>
+      <li> Viejo item 3 </li>
+      <li> Viejo item 4 </li>
+      <li> Viejo item 5 </li>
+      <li> Viejo item 6 </li>
+   </ul>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+      const $lista1 = $("#lista1");
+      let contador1 = 0;
+
+      //  -----  Solo reciven el evento los elementos que existian antes de agregar la función  -----
+      // $("li").on('click', function () {
+      //    $(this).remove();
+      //    contador1++;
+      //    $lista1.append('<li> Nuevo item ' + contador + '</li>');
+      // });
+
+
+      //  -----  Evento delegado de la lista 1  -----
+      $lista1.on('click', 'li', function () {
+         $(this).remove();
+         contador1++;
+         $lista1.append('<li> Nuevo item lista 1 - ' + contador1 + '</li>');
+      });
+
+
+      $(document).ready(function () {
+
+         //  -----  Evento delegado para la lista2  -----
+         const $lista2 = $("#lista2");
+         let contador2 = 0;
+
+         $lista2.on('click', 'li', function () {
+            $(this).remove();
+            contador2++;
+            $lista2.append('<li>Nuevo item lista 2 - ' + contador2 + '</li>');
+         });
+
+      });
+
+
+
+   </script>
+
+
+   <ul id="lista2">
+      <li> Viejo item 1 </li>
+      <li> Viejo item 2 </li>
+      <li> Viejo item 3 </li>
+      <li> Viejo item 4 </li>
+      <li> Viejo item 5 </li>
+      <li> Viejo item 6 </li>
+   </ul>
+
+
+</body>
+
+</html>

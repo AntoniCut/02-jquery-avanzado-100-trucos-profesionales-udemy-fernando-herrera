@@ -1,0 +1,101 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//028.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 028.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .slideshow1,
+      .slideshow2 {
+         width: 400px;
+         height: 200px;
+         background-color: red;
+         color: white;
+         text-align: center;
+         line-height: 200px;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <center>
+      <h1> 028.html - Simular Eventos y Simular Parámetros </h1>
+   </center>
+   <hr>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+
+   <div class="slideshow1"> SlideShow 1 - Cambia el color por Defecto </div> <br>
+   <button id="btnSiguiente1"> >> </button> <br> <br> <br>
+
+   <div class="slideshow2"> SlideShow 2 - Le asignamos un color </div> <br>
+   <button id="btnSiguiente2"> >> </button>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      //  **********  Operaciones con el SlideShow 1  **********
+      $("#btnSiguiente1").on('click', function (e, color) {
+
+         console.log(color);
+         color = color || 'pink';
+
+         $((".slideshow1")).css({ backgroundColor: color });
+      });
+
+
+      //  **********  Simulación de Eventos  **********
+      const $boton1 = $("#btnSiguiente1");
+      $boton1.trigger('click');
+      
+
+
+      //  **********  Operaciones con el SlideShow 2  **********
+      $("#btnSiguiente2").on('click', function (e, color) {
+
+         console.log(color);
+         color = color || 'pink';
+
+         $((".slideshow2")).css({ backgroundColor: color });
+      });
+
+
+      //  **********  Simulación de Eventos  **********
+      const $boton2 = $("#btnSiguiente2");
+      $boton2.trigger('click', ['green']);
+
+
+
+
+   </script>
+
+
+</body>
+
+</html>

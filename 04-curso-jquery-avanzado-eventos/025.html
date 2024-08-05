@@ -1,0 +1,66 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//025.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 025.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      
+      #mensaje {
+         display: block;
+      }
+
+      html.JS {
+         display: none;
+      }
+
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 025.html - Detectar si JavaScript esta Habilitado utilizando una Clase </h1>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <div id="mensaje"> Este sitio requiere JAVASCRIPT, por favor activelo </div>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      $(document).ready( function() {
+
+         //  -----  Documento Cargdo  -----
+         console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+         $('html').addClass('JS');
+
+      });
+
+
+   </script>
+
+
+</body>
+
+</html>
