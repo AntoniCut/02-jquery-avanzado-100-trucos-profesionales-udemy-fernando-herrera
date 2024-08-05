@@ -1,0 +1,73 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//008.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 008.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+</head>
+
+
+<body>
+
+   <h1> 008.html - Modificando Links y Colocando Iconos </h1>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <ul id="links">
+      <li> <a href="001.html"> Ir al 001.html </a> </li>
+      <li> <a href="006.html"> Ir al 006.html </a> </li>
+      <li> 
+         <a href="https://google.com"> ir al Google.com </a> 
+         <!-- <img src="asset/img/external.png" alt="">  -->
+      
+      </li>
+   </ul>
+
+   
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      $("#links a").each( function() {
+
+         //  apunta a una dirección externa.
+         console.log("this.hostname: ", this.hostname);
+         console.log("location.hostname: ", location.hostname);
+
+         if( this.hostname != location.hostname) {
+            $(this)
+               .append('<img src="asset/img/external.png">')
+               .attr('target', '_blank')
+         }
+
+      });
+      
+
+      
+
+
+
+   </script>
+
+
+</body>
+
+</html>

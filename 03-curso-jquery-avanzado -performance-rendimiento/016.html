@@ -1,0 +1,101 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//016.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 016.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+
+      .listas {
+         display: flex;
+         gap: 50px;
+         justify-content: center;
+      }
+
+      #elem1, #elem2 {
+         width: 40%;
+         border: 1px solid blue;
+      }
+
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 016.html - Manipulacion del DOM al Mínimo. </h1>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+
+   <div class="listas">
+
+      <div id="elem1"> </div>
+      <div id="elem2"> </div>
+
+   </div>
+   
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  ----------  Documento Cargado  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+      //  **********  FORMA NO RECOMENDADA  **********
+      const inicio = new Date();
+      
+      const $elem1 = $("#elem1");
+      
+      for( let i=0; i<=10000; i++) $elem1.append('<li> Elemento: '+ i + ' </li>')
+      
+      const fin = new Date();
+
+      console.log("-----  Forma No Recomendada  -----");
+      console.log("Inicio: ", inicio.getTime());
+      console.log("Fin: ", inicio.getTime());
+      console.log("Diferencia: ", fin.getTime() - inicio.getTime());
+
+
+      //  **********  FORMA RECOMENDADA  **********
+      const inicio2 = new Date();
+
+      const $elem2 = $("#elem2");
+      const arr = [];
+      
+      for(let i=0; i<=10000; i++) arr.push('<li> Elemento: '+ i + ' </li>');
+      
+      $elem2.append(arr.join(''));
+      
+      const fin2 = new Date();
+
+      console.log("-----  Forma Recomendada  -----");
+      console.log("Inicio: ", inicio2.getTime());
+      console.log("Fin: ", fin2.getTime());
+      console.log("Diferencia: ", fin2.getTime() - inicio2.getTime());
+
+
+   </script>
+
+
+</body>
+
+</html>

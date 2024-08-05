@@ -1,0 +1,48 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//014.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 014.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+</head>
+
+
+<body>
+
+   <h1> 014.html - Prevenir que un texto sea Seleccionado </h1>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      $("#parrafo")
+         .attr("unselectable", "on")
+         .css("user-select", "none")
+         .on("selectstart", false);
+
+
+   </script>
+
+
+</body>
+
+</html>

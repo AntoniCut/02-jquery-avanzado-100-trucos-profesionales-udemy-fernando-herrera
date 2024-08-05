@@ -1,0 +1,75 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//005.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 005.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .elem {
+         width: 50px;
+         height: 50px;
+         background-color: blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 005.html - Contar cuantos elementos hay en el DOM </h1>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <div class="elem"> </div>
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      const quantos_H1_Hay = $("h1").length;
+      console.log("Cuantos 'h1' hay en la Página: ?: ", quantos_H1_Hay);
+
+      const quantos_P_Hay = $("p").length;
+      console.log("Cuantos 'p' hay en la Página: ?: ", quantos_P_Hay);
+
+      const quantos_OL_Hay = $("ol").length;
+      console.log("Cuantos 'ol' hay en la Página: ?: ", quantos_OL_Hay);
+
+      const quantos_Elementos_Hay = $("*").length;
+      console.log("Cuantos 'ol' hay en la Página: ?: ", quantos_Elementos_Hay);
+
+   </script>
+
+   <p> No se cuenta como elemento, el script se ejecuta antes </p>
+
+</body>
+
+</html>

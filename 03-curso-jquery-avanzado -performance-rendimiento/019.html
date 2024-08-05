@@ -1,0 +1,93 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//019.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 019.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .listas {
+         display: flex;
+         gap: 50px;
+         justify-content: center;
+      }
+
+      #elem1,
+      #elem2 {
+         width: 40%;
+         border: 1px solid blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 019.html - Guardar Elementos en el Cache. </h1>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+
+   <ul id="numeros">
+
+      <li id="primero"> Primero </li>
+      <li id="segundo"> Segundo </li>
+      <li id="tercero"> Tercero </li>
+      <li id="Cuarto"> Cuarto </li>
+      <li id="quinto"> Quinto </li>
+
+   </ul>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  ----------  Documento Cargado  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      //  **********  MALA PRACTICA  **********
+      //$("#numeros li").eq(2).remove();    //  Elimina el Tercero
+      //$("#numeros li").eq(1).remove();    //  Elimina el Segundo
+      //$("#numeros li").eq(0).remove();    //  Elimina el Primero
+
+
+
+      //  **********  BUENA PRACTICA  **********
+      //$numeros = $("#numeros li");
+      //$numeros.eq(2).remove();    //  Elimina el Tercero
+      //$numeros.eq(1).remove();    //  Elimina el Segundo
+      //$numeros.eq(0).remove();    //  Elimina el Primero
+
+      
+      //  **********  ALTERNATIVA VÁLIDA  **********
+      $numeros = $("#numeros li");
+      $numeros
+         .eq(0).remove().end()
+         .eq(1).remove().end()
+         .eq(2).remove().end();
+      
+
+   </script>
+
+
+</body>
+
+</html>

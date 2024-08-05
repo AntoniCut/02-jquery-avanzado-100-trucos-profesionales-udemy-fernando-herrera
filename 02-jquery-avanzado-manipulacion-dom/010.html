@@ -1,0 +1,100 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//010.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 010.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .menu {
+         position: fixed;
+         width: 50px;
+         height: 50px;
+         background-color: blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 010.html - Prevenir el Click Derecho y Crear Menu Personalizado </h1>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <ul id="desayuno">
+      <li class="huevos"> No</li>
+      <li class="tostadas"> No </li>
+      <li class="jugo"> No </li>
+   </ul>
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      $(function () {
+
+         //  **********  Documento Cargado  **********
+         console.warn('----------  Documento Cargado!!!  ----- ', 'jQuery version:', $.fn.jquery, ' ----------');
+
+         //  -----  Click botón derecho del ratón  -----
+         $(document).on('contextmenu', function (e) {
+
+            //  -----  Bloquear el Menu Derecho del Ratón  -----
+            e.preventDefault();
+            console.log(e);
+
+            console.log("X = ", e.pageX, " -  Y = ", e.pageY);
+            
+
+            // Elimina cualquier menú previo
+            $('.menu').remove();
+
+            //  Creamos un elemento div.
+            const div = $('<div>', {
+               'class': 'menu',
+               'css': {
+                  'top': e.pageY,
+                  'left': e.pageX,
+                  'position': 'absolute'
+               }
+            });
+
+            //  Añadimos al HTML y lo animamos.
+            div.appendTo('body').animate({
+               'width': '200px',
+               'height': '300px'
+            }, 300);
+         });
+
+         // Para remover el menú si se hace click en otra parte de la página
+         $(document).on('click', function () {
+            $('.menu').remove();
+         });
+
+      });
+
+
+   </script>
+
+
+</body>
+
+</html>

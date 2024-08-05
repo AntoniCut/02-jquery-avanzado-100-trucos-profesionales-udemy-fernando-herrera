@@ -1,0 +1,81 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//013.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 013.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+</head>
+
+
+<body>
+
+   <div id="divEditable">
+
+      <h1> 013.html - Contenido Editable incluyendo Estilo </h1>
+
+      <p>
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+
+   </div>
+
+   <button type="button" class="btn btn-primary"> Guardar </button>
+
+   <style id="divEstilo">
+      html {
+         background-color: red;
+         position: relative;
+      }
+
+      body {
+         font-size: 20px;
+         color: blue;
+      }
+   </style>
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      // $("h1").attr("contentEditable", true);
+      // $("p").attr("contentEditable", true);
+      // $("#divEstilo")
+      //    .css({
+      //       display: 'block',
+      //       whiteSpace: 'pre',
+      //       color: 'green'
+      //    })
+      //    .attr("contentEditable", true);
+      $("#divEditable").attr("contentEditable", true);
+      
+      $("button").on('click', function() {
+         
+         const contenido = $("#divEditable").text();
+         console.log("contenido de la página: ", contenido);
+
+         const html = $("#divEditable").html();
+         console.log("\nHTML de la página: ", html);
+
+      });
+
+
+   </script>
+
+
+</body>
+
+</html>

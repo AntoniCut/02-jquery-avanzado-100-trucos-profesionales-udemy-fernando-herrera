@@ -1,0 +1,69 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//004.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 004.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .elem {
+         width: 50px;
+         height: 50px;
+         background-color: blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 004.html - función IS de jQuery </h1>
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <div class="elem"> </div>
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+
+      //  -----  Referencia a un elemento del HTML  -----
+      const $elem = $(".elem");
+
+      //  -----  Es un div?  -----
+      $elem.is('div') && console.log("Es un 'div'");
+
+      //  -----  Tiene la clase .elem?  -----
+      $elem.is('.elem') && console.log("Tiene la clase 'elem'");
+
+      //  -----  Esta visible?  -----
+      $elem.is(':not(:visible)') && console.log("El elemento esta invisible");
+      $elem.is(':visible') && console.log("El elemento esta visible");
+
+      //  -----  Animamos el elemento y preguntamos si se ha animado  -----
+      $elem.animate({ 'width': 200 }, 1000);
+      $elem.is(':animated') && console.log("El elemento es animado");
+
+
+   </script>
+
+</body>
+
+</html>

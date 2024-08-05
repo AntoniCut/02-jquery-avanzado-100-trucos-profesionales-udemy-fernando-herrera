@@ -1,0 +1,62 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//009.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 009.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+</head>
+
+
+<body>
+
+   <h1> 009.html - Metodo end() </h1>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <ul id="desayuno">
+      <li class="huevos"> No</li>
+      <li class="tostadas"> No </li>
+      <li class="jugo"> No </li>
+   </ul>
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      $(".huevos").text("Si");
+      $(".tostadas").text("Si");
+      $(".jugo").text("Si");
+
+      $("li").each(function () {
+         $(this).text("No");
+      });
+
+      const desayuno = $("#desayuno");
+      desayuno
+         .find('.huevos').text('Si').end()      //  Sigue en secuencia.
+         .find('.tostadas').text('Si').end()
+         .find('.jugo').text('Si').end()
+
+   </script>
+
+
+</body>
+
+</html>

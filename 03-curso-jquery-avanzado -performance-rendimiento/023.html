@@ -1,0 +1,77 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//023.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 023.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .listas {
+         display: flex;
+         gap: 50px;
+         justify-content: center;
+      }
+
+      #elem1,
+      #elem2 {
+         width: 40%;
+         border: 1px solid blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <center>
+      <h1> 023.html - No esperes a que la Página este lista </h1>
+      <hr> <br>
+   </center>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+
+      //  ----------  Documento Cargado  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      //  **********  Delegación de un Evento  **********
+      //  -----  jQuery esta pendiente de algun Evento ------------------------------
+      //  -----  que cumpla la condición para ejecutar esa funcion ------------------
+
+      $(document).on('click', 'button', function () {
+         console.log('Hola Mundo');
+      });
+
+
+   </script>
+
+
+   <button class="btn btn-primary"> Click me </button>
+
+</body>
+
+</html>

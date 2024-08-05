@@ -1,0 +1,107 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//017.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 017.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .listas {
+         display: flex;
+         gap: 50px;
+         justify-content: center;
+      }
+
+      #elem1,
+      #elem2 {
+         width: 40%;
+         border: 1px solid blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 017.html - Usemos JavaScript Plano si el Tiempo es Crítico. </h1>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+
+   <ul id="colores">
+
+      <li id="verde"> Verde </li>
+      <li id="rojo"> Rojo </li>
+      <li id="azul"> Azul </li>
+      <li id="naranja"> Naranja </li>
+      <li id="rosado"> Rosado </li>
+
+   </ul>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  ----------  Documento Cargado  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      //  **********  Con jQuery  **********
+      console.log("-----  Con jQuery  -----");
+
+      const inicio = new Date();
+
+      $("#colores li").each(function () {
+         const id = $(this).attr("id");
+         console.log(id);
+      });
+
+      const fin = new Date();
+
+      console.log("Diferencia con jQuery: ", fin.getTime() - inicio.getTime());
+
+      //  ************************************************************************
+
+      
+      //  **********  Con jS  **********
+            
+      console.log("\n-----  Con JS  -----");
+
+      const inicio2 = new Date();
+
+      $("#colores li").each(function () {
+         const id = this.id;
+         console.log(id);
+      });
+
+      const fin2 = new Date();
+
+      console.log("Diferencia con jS: ", fin2.getTime() - inicio2.getTime());
+
+
+      //  ************************************************************************
+
+
+   </script>
+
+
+</body>
+
+</html>

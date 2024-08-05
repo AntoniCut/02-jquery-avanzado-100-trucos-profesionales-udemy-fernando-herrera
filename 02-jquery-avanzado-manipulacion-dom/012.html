@@ -1,0 +1,53 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//012.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 012.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+</head>
+
+
+<body>
+
+   <h1> 012.html - Separar elementos HTML usando Anchor Tags </h1>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      const url = 'https://docs.netlify.com/functions/optional-configuration/?fn-language=ts#app#comentarios';
+
+      const $a = $("<a>", { href: url });
+
+      console.log("Host name: ", $a.prop('hostname'));
+      console.log("Path: ", $a.prop('pathname'));
+      console.log("Query: ", $a.prop('search'));
+      console.log("Query &: ", $a.prop('search').split("&"));
+      console.log("Protocolo: ", $a.prop('protocol'));
+      console.log("Hash: ", $a.prop('hash'));
+
+      
+   </script>
+
+
+</body>
+
+</html>

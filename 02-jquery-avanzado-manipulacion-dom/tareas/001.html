@@ -1,0 +1,93 @@
+<!--  *****************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/tareas/001.html  **********  -->
+<!--  *****************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> Tarea Practica #1 -jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!-- Cambiar por un CDN del bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+
+
+<body>
+
+    <h1 id="titulo"> Algún texto </h1>
+    <p> Parrafo #1 </p>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+
+        //  ----------  Documento Cargado  -----
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+        // Crear una referencia local al h1 con el id titulo
+        const $titulo = $("#titulo");
+
+
+        // Usar la referencia local del titulo en lugar del selector
+        $titulo.text('Ejercicio #1');
+
+
+        // Crear un evento para todos los botones, que al hacer click en él
+        // ejecute la impresión en consola de 'Hola Mundo'
+        // Sin usar el $(document).ready, ni tampoco alguna de sus diferentes formas
+        $(document).on('click', 'button', function () {
+            console.log('Hola Mundo');
+        });
+
+
+        // Cree 1000 botones que impriman Hola Mundo en consola reutilizando el código anterior.
+        // Debe de modificar el DOM una única vez
+        // Cada botón debe tener como etiqueta el número de 1 a 1000.
+        // Debe insertar los 1000 botones después del boton que se encuentra
+        // debajo de este script
+
+        const arr = [];
+        let contenido = '';
+
+        for (var i = 1; i <= 1000; i++) {
+
+            if(i === 1) contenido = '<br><br>'
+            else contenido = `<button type="button" class="btn btn-primary"> ${i} </button> &nbsp;`;
+            
+            if (i % 30 === 0) contenido += `<br><br>`;
+
+            arr.push(contenido);
+        }
+
+
+        //  Una vez que el documento este cargado añadimos el boton al HTML que sera el ultimo elemento.
+        $(function () {
+
+            $(arr.join('')).insertAfter('button');         //  Unir todo por un espacio vacio
+        });
+
+
+    </script>
+
+
+    <button type="button" class="btn btn-primary">
+        Imprimir en consola 'Hola Mundo'
+    </button>
+
+    <br> <br>
+
+
+</body>
+
+</html>

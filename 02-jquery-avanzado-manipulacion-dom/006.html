@@ -1,0 +1,76 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//006.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 006.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .elem {
+         width: 50px;
+         height: 50px;
+         background-color: blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 006.html - Definir si una funcion existe </h1>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <div class="elem"> </div>
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+
+      //  -----  si el h1 esiste  -----
+      if ($("h1").length > 0) {
+         console.log("El h1 existe");
+      }
+
+      //  -----  Definimos la función 'existe'  -----
+      $.fn.existe = function () {
+         return this.length > 0;
+      }
+      console.log("Existe el h1?: ", $("h1").existe() ? "Existe" : "No existe");
+      console.log("Existe el ul?: ", $("ul").existe() ? "Existe" : "No existe");
+
+
+   </script>
+
+
+</body>
+
+</html>

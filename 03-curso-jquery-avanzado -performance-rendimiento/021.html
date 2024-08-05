@@ -1,0 +1,151 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//021.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 021.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .listas {
+         display: flex;
+         gap: 50px;
+         justify-content: center;
+      }
+
+      #elem1,
+      #elem2 {
+         width: 40%;
+         border: 1px solid blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 021.html - Trabajar los Objetos de jQuery como Arreglos Normales. </h1>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <ul>
+      
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+   </ul>
+   
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  ----------  Documento Cargado  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+      const arr = $("li");
+      const iteraciones = 100000;
+
+
+      //  **********  Ciclo Nativo JS  **********
+      console.time('ciclo nativo');
+
+      for(let z=0; z<iteraciones; z++) {
+         
+         const largo = arr.length;
+
+         for(let i=0; i<largo; i++) arr[i];
+         
+      }
+
+      console.timeEnd('ciclo nativo');
+
+
+      //  **********  Ciclo jQuery  **********
+      console.time('ciclo foreach');
+
+      for(let z=0; z<iteraciones; z++) {
+
+         arr.each( function(i, val) {
+            this;
+         })
+      }
+
+      console.timeEnd('ciclo foreach');
+
+      
+      
+
+   </script>
+
+
+</body>
+
+</html>

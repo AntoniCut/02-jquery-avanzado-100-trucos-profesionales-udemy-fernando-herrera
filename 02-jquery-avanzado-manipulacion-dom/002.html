@@ -1,0 +1,82 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//002.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 002.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+</head>
+
+
+<body>
+
+   <h1> 002.html - Ejecutar Código en determinada página </h1>
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+
+      //  ----------  Objeto para Agregar y Ejecutar Rutas  ----------
+      const route = {
+
+         _routes: {},
+
+         add: function (url, action) {
+            this._routes[url] = action;
+         },
+
+         run: function () {
+
+            $.each(this._routes, function (patron) {
+               if (location.href.match(patron)) {
+                  this();
+               }
+            });
+         }
+      };
+
+
+      //  -----  Añadimos  -----
+
+      route.add('002.html', function () {
+         console.log("Este código solo funciona en la página 002.html");
+      });
+
+      route.add('about.html', function () {
+         console.log("Este código solo funciona en la página about.html");
+      });
+
+      route.add('.*.html', function () {
+         console.log("Este código solo funciona en cualquier página HTML");
+      });
+
+
+      //  -----  Ejecutamos  -----
+      route.run();
+
+      console.log("route._routes{}: ", route._routes);
+
+
+   </script>
+
+</body>
+
+</html>

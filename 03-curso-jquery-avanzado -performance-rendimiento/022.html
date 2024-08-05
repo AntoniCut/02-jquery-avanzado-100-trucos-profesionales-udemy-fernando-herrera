@@ -1,0 +1,106 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//022.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 022.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .listas {
+         display: flex;
+         gap: 50px;
+         justify-content: center;
+      }
+
+      #elem1,
+      #elem2 {
+         width: 40%;
+         border: 1px solid blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <center>
+      <h1>
+         022.html - Desenlazar elementos del DOM cuando <br>
+         hacemos modificaciones Complejas a Ellos.
+      </h1>
+      <br>
+      <hr> <br>
+   </center>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <div id="elem" style="background-color: blue;"> </div>
+
+   <div id="elem2" style="background-color: red;"> </div>
+
+
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  ----------  Documento Cargado  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      let i = 0, iteraciones = 1000;
+      const $elem = $("#elem"), $elem2 = $("#elem2");
+
+
+      //  **********  enlazado DOM  **********
+      console.time('enlazado DOM');
+
+      for (i = 0; i < iteraciones; i++) {
+
+         $elem.width(Math.round(Math.random() * 100));
+         $elem.height(Math.round(Math.random() * 100));
+      }
+
+      console.timeEnd('enlazado DOM');
+
+
+      //  **********  separado  **********
+      console.time('separado DOM');
+      const parent = $elem2.parent();    //  Padre del elemento
+
+      $elem2.detach();                  //  Separamos el elemento del padre.
+
+      for (i = 0; i < iteraciones; i++) {
+
+         $elem2.width(Math.round(Math.random() * 100));
+         $elem2.height(Math.round(Math.random() * 100));
+      }
+
+      $elem2.appendTo(parent);         //  y lo insertamos dentro del padre.
+
+      console.timeEnd('separado DOM');
+
+
+   </script>
+
+
+</body>
+
+</html>

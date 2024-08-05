@@ -1,0 +1,88 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//007.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 007.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .elem {
+         width: 50px;
+         height: 50px;
+         background-color: blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 007.html - Segundo Parametro de la funcion $() </h1>
+
+   <p>
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <ul id="primeraLista">
+      <li> Uno </li>
+      <li> Dos </li>
+      <li> Tres </li>
+   </ul>
+
+   <ul id="segundaLista">
+      <li> Verde </li>
+      <li> Azul </li>
+   </ul>
+
+
+   <!-- ----------  Librería de jQuery  ----------   -->
+   <script src="asset/libs/jquery-3.min.js" charset="utf-8"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      $("li", "#primeraLista").each(function () {
+         console.log("Primera Lista: ", $(this).html());
+      });
+
+      $("li", "#segundaLista").each(function () {
+         console.log("Segunda Lista: ", $(this).html());
+      });
+
+      const div = $('<div>', {
+         'class': "azul-grande",
+         'css': {
+            'background-color': "blue"
+         },
+         'width': 30,
+         'height': 30,
+         'animate': {
+            'width': 250,
+            'height': 50
+         }
+      });
+
+      div.appendTo('body');
+
+      
+
+
+
+   </script>
+
+
+</body>
+
+</html>

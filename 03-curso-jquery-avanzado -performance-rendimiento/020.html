@@ -1,0 +1,80 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//020.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 020.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .listas {
+         display: flex;
+         gap: 50px;
+         justify-content: center;
+      }
+
+      #elem1,
+      #elem2 {
+         width: 40%;
+         border: 1px solid blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <h1> 020.html - Definir Funciones Repetidas Una Unica Vez. </h1>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+   <button type="button" id="menuBtn" class="btn btn-outline-primary"> Mostrar menú </button>
+
+   <a href="#" id="menuLink"> Mostrar menú link </a>
+   
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  ----------  Documento Cargado  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      //  ----------  Menos Optimizada  ----------
+      $("#menuBtn, #menuLink").on('click', function() {
+         console.log('\nMostrando Menú');
+      });
+
+
+      //  ----------  Más Optimizada  ----------
+
+      function mostrarMenu() {
+         console.log('Mostrando Menú - functión');
+      }
+
+      $("#menuBtn, #menuLink").on('click', mostrarMenu);
+      
+      
+
+   </script>
+
+
+</body>
+
+</html>

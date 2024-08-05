@@ -1,0 +1,312 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//024.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 025.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      .listas {
+         display: flex;
+         gap: 50px;
+         justify-content: center;
+      }
+
+      #elem1,
+      #elem2 {
+         width: 40%;
+         border: 1px solid blue;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <center>
+      <h1> 024.html - Creando un Estilo para Modificar Multiples Elementos </h1>
+      <hr> <br>
+   </center>
+
+   <p id="parrafo">
+      Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+      creada.
+   </p>
+
+
+   <ul id="lista1">
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+   </ul>
+
+
+
+   <ul id="lista2">
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+      <li> item </li>
+
+   </ul>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+
+      //  ----------  Documento Cargado  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      console.time('Lista 1');
+      $("#lista1 li").css({
+         color: 'red',
+         fontSize: '20px'
+      })
+      console.timeEnd('Lista 1');
+
+
+      console.time('Lista 2');
+      const $estilo = $("<style>");
+      $estilo.text('#lista2 li { color: blue; font-size: 20px;}');
+      $estilo.appendTo('body');
+      console.timeEnd('Lista 2');
+
+
+
+
+   </script>
+
+
+</body>
+
+</html>
