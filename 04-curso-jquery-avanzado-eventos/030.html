@@ -1,0 +1,133 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//030.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 030.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      /* main {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: calc(100vh - 150px);
+      } */
+
+      #ball {
+         width: 100px;
+         height: 100px;
+         position: absolute;
+         border-radius: 100%;
+         background-color: red;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <center>
+         <h1> 030.html - Conoce tus Eventos </h1>
+      </center>
+      <hr>
+
+      <p id="parrafo">
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <br> <br>
+      <div class="holder">
+         <button id="boton1"> 1 </button>
+         <button id="boton2"> 2 </button>
+         <button id="boton3"> 3 </button>
+         <button id="boton4"> 4 </button>
+         <button id="boton5" style="float: right;"> Limpiar </button>
+
+      </div>
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      const boton1 = $("#boton1"),
+         boton2 = $("#boton2"),
+         boton3 = $("#boton3"),
+         boton4 = $("#boton4"),
+         boton5 = $("#boton5");
+
+
+      boton1.on('click.temp', function () {
+         console.log('click');
+      });
+
+
+      //  -----  Manejar Multiples Instancias de Eventos  -----
+      boton2.on('mouse enter mouseleave.temp', function () {
+         console.log('Entro mouse / Salio mouse');
+      });
+
+      boton3.on('click.temp', Math.round(Math.random() * 20), function (e) {    //  solo se procesa una vez.
+         console.log("El numero random es: ", e.data);
+      });
+
+      boton4.on('click.temp', function (e) {
+         console.log("Temp disparado");
+
+      });
+
+      boton5.on('click.temp', function (e) {
+         console.clear();              //  Limpia la Consola.
+         $('button').off('.temp');     //  remueve las funciones del botón con la clase temp.
+         console.log('Eventos de los Botones .temp han sido eliminados');
+      });
+
+
+   </script>
+
+
+</body>
+
+</html>

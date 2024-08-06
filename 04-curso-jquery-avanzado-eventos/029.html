@@ -1,0 +1,144 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//029.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 029.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      main {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: calc(100vh - 150px);
+      }
+
+      #ball {
+         width: 100px;
+         height: 100px;
+         position: absolute;
+         border-radius: 100%;
+         background-color: red;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <header class="header">
+
+      <center>
+         <h1> 029.html - Trabajar con Eventos cuando Tocamos la pantalla con el Dedo </h1>
+      </center>
+      <hr>
+
+      <p id="parrafo">
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+
+   </header>
+
+   <main class="main">
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      //  -----  Creamos un div que sera una bola  -----
+      const ball = $('<div id="ball"> </div>').appendTo('.main');
+
+      let startPosition = {};
+      let elementPosition = {};
+
+
+      //  -----  Evento cuando tenemos Pulsado el botón del raton o el dedo.
+      ball.on('mousedown touchstart', function (e) {
+
+         console.log(e);
+         e.preventDefault();
+
+         //  -----  Normalizar el evento  -----
+         e = (e.originalEvent.touches) ? e.originalEvent.touches[0] : e;
+
+         //  Posición inicial donde se encuentra la bola y la
+         startPosition = {
+            x: e.pageX,
+            y: e.pageY
+         };
+
+         //  posición inicial donde estoy poniendo el dedo.
+         elementPosition = {
+            x: ball.offset().left,
+            y: ball.offset().top
+         };
+
+         console.log("startPosition X: ", startPosition.x, "startPosition Y: ", startPosition.y);
+         console.log("elementPosition X: ", elementPosition.x, "elementtPosition Y: ", elementPosition.y);
+
+
+         //  -----  Creamos el Movimiento del Mouse o del Dedo de la Bola  -----
+         ball.on('mousemove.rem touchmove.rem', function (e) {
+
+            //  -----  Normalizar el evento  -----
+            e = (e.originalEvent.touches) ? e.originalEvent.touches[0] : e;
+
+            ball.css({
+               left: elementPosition.x + (e.pageX - startPosition.x),
+               top: elementPosition.y + (e.pageY - startPosition.y)
+
+            });
+
+         });
+
+      });
+
+
+      //  -----  Evento cuando soltamos el botón del raton o el dedo.
+      ball.on('mouseup touched', function () {
+         ball.off('.rem');
+      });
+
+
+   </script>
+
+
+</body>
+
+</html>

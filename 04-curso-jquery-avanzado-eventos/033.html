@@ -1,0 +1,120 @@
+<!--  ****************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/manipulacion-dom//033.html  **********  -->
+<!--  ****************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 033.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+   <link rel="stylesheet" href="asset/css/estilo.css">
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 033.html - Crear Eventos Personalizados </h1>
+
+      <hr>
+
+      <p id="parrafo">
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <br> <br>
+      <button id="btn1"> Saltar </button>
+      <button id="btn2"> Golpear </button>
+      <button id="btn3"> Click </button>
+
+      <div id="contenedor"> </div>
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      //  -----  referencias al HTML  -----
+      const boton1 = $("#btn1"),
+         boton2 = $("#btn2"),
+         boton3 = $("#btn3"),
+         div = $("#contenedor");
+
+
+      //  -----  Definir Eventos Personalizados  -----
+      div.on({
+
+         saltar: function () {
+            console.log('Saltar');
+         },
+
+         golpear: function (e, data) {
+            console.log('Golpeando' + data + '!');
+         },
+
+         click: function () {
+            console.log('Simulando un click!');
+         }
+
+      });
+
+      //  -----  Ejecutar Eventos  -----
+      boton1.click(function () {
+         div.trigger('saltar');
+      });
+
+      boton2.click(function () {
+         div.trigger('golpear', [' muy fuerte']);
+      });
+
+      boton3.click(function () {
+         div.trigger('click');
+      });
+
+
+   </script>
+
+
+</body>
+
+</html>
