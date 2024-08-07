@@ -1,0 +1,146 @@
+<!--  *************************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/09-tutorialzine/04-treacherrous-html-ahead.html  **********  -->
+<!--  *************************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 04-treacherrous-html-ahead.html - TutorialZine </title>
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main {
+         display: flex;
+         flex-direction: column;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 10px;
+         height: auto;
+      }
+
+      section {
+         display: flex;
+      }
+
+      #me,
+      div {
+         width: 100px;
+         height: 100px;
+         line-height: 100px;
+         text-align: center;
+         color: yellowgreen;
+         font-weight: bold;
+         border: 1px solid blue;
+         margin: 10px;
+      }
+
+      li {
+         list-style: none;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 04-treacherrous-html-ahead.html - TutorialZine </h1>
+
+      <p id="parrafo">
+         Tu jQuery-fu es potente. ¿Quizás necesites algo un poco más difícil? Las reglas son las mismas que antes:
+         haz que los elementos con comentarios sean azules.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <section>
+         <p>Treacherous HTML ahead!</p>
+
+         <div id="make-me-blue">
+            <!-- Make me blue! -->
+         </div>
+
+         <div></div>
+
+         <div><!-- Make me blue! --></div>
+      </section>
+
+      <section>
+
+         <p>Can you make this span blue too? <span><!-- Make me blue! --></span></p>
+         <p>But not <span>this one!</span></p>
+
+         <div></div>
+
+         <p>Yes, I know, HTML can be mean sometimes. But it is not on purpose!
+            <span>Or is <i>it?</i> <i><!-- Make me blue! --></i></span>
+         </p>
+
+         <div> <br>
+            <div><!-- Make me blue! --></div>
+         </div>
+      </section>
+
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      $.fn.blue = function () {
+         $(this).css({
+            backgroundColor: 'blue'
+         });
+      }
+
+      // Recorrer todos los elementos del DOM
+      $('*').each(function () {
+         var element = $(this);
+         // Recorrer todos los nodos hijos de cada elemento
+         element.contents().each(function () {
+            // Verificar si el nodo es un comentario
+            if (this.nodeType === Node.COMMENT_NODE && this.nodeValue.trim() === 'Make me blue!') {
+               // Cambiar el fondo del elemento padre a azul
+               element.blue();
+            }
+         });
+      });
+
+   </script>
+
+
+</body>
+
+</html>

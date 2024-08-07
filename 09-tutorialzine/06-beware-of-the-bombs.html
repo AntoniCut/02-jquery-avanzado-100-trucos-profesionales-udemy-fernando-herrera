@@ -1,0 +1,123 @@
+<!--  *********************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/09-tutorialzine/06-beware-of-the-bombs.html  **********  -->
+<!--  *********************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 06-beware-of-the-bombs.html - TutorialZine </title>
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main,
+      .main2 {
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 10px;
+         height: auto;
+      }
+
+      section {
+         display: flex;
+      }
+
+      #me,
+      div {
+         width: 100px;
+         height: 100px;
+         line-height: 100px;
+         text-align: center;
+         color: yellowgreen;
+         font-weight: bold;
+         border: 1px solid blue;
+         margin: 10px;
+      }
+
+      li {
+         list-style: none;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 06-beware-of-the-bombs.html - TutorialZine </h1>
+
+      <p id="parrafo">
+         Hagamos las cosas más interesantes. Algunos divs son "bombas". Si intentas hacerlos azules, explotarán. 
+         Por lo tanto, debes pensar en una forma de hacer que todos los divs que no sean bombas sean azules (¿entiendes la pista? ;).
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <!-- Make all divs blue *except* the bombs. -->
+
+      <div> </div>
+      <div class="bomb"> Bomba </div>
+      <div> </div>
+      <div class="bomb"> Bomba </div>
+      <div> </div>
+      <div> </div>
+      <div class="bomb"> Bomba </div>
+      <div> </div>
+      <div> </div>
+      <div class="bomb">Bomba </div>
+
+   </main>
+
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      $.fn.blue = function () {
+         $(this).css({
+            backgroundColor: 'blue'
+         });
+      }
+
+      //  -----  Los divs que no tiene la clase bomb los pinta azules.
+      $('div').not('.bomb').blue();
+
+
+   </script>
+
+
+</body>
+
+</html>

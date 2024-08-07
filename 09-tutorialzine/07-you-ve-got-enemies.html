@@ -1,0 +1,135 @@
+<!--  ********************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/09-tutorialzine/07-you-ve-got-enemies.html  **********  -->
+<!--  ********************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 07-you-ve-got-enemies.html - TutorialZine </title>
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main,
+      .main2 {
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 10px;
+         height: auto;
+      }
+
+      section {
+         display: flex;
+      }
+
+      #me,
+      div {
+         width: 100px;
+         height: 100px;
+         line-height: 100px;
+         text-align: center;
+         color: yellowgreen;
+         font-weight: bold;
+         border: 1px solid blue;
+         margin: 10px;
+      }
+
+      li {
+         list-style: none;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 07-you-ve-got-enemies.html - TutorialZine </h1>
+
+      <p id="parrafo">
+         Pero, ¿qué es la vida sin enemigos? ¿Ves la pestaña ENEMIGOS en el editor? Contiene código JS que no puedes
+         editar.
+         Léelo con atención para superar este desafío. Consejo: ¡ setTimeout es tu amigo!
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <section>
+         <!-- El div será agregado aquí por el código enemigo -->
+      </section>
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      $.fn.blue = function () {
+         $(this).css({
+            backgroundColor: 'blue'
+         });
+      }
+
+
+      // **********  Aqui va el código aquí para modificar los divs que se agregan  **********
+
+      // Función para aplicar estilos a los divs agregados
+      function applyStyles() {
+         $('div').each(function () {
+            $(this).blue();
+            
+         });
+      }
+
+      // Esperar a que el div del código enemigo sea agregado
+      setTimeout(function () {
+         applyStyles(); // Aplica los estilos después de que el div enemigo sea agregado
+      }, 1500); // Tiempo mayor al timeout del enemigo para asegurar que el div ha sido agregado
+
+      // Código enemigo
+      var div = $('<div>'),
+         section = $('section');
+
+      setTimeout(function () {
+         section.append(div);
+      }, 1000);
+
+
+   </script>
+
+
+</body>
+
+</html>

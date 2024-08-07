@@ -1,0 +1,174 @@
+<!--  ****************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/09-tutorialzine/05-mind-the-order.html  **********  -->
+<!--  ****************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 05-mind-the-order.html - TutorialZine </title>
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main,
+      .main2 {
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 10px;
+         height: auto;
+      }
+
+      section {
+         display: flex;
+      }
+
+      #me,
+      div {
+         width: 100px;
+         height: 100px;
+         line-height: 100px;
+         text-align: center;
+         color: yellowgreen;
+         font-weight: bold;
+         border: 1px solid blue;
+         margin: 10px;
+      }
+
+      li {
+         list-style: none;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 05-mind-the-order.html - TutorialZine </h1>
+
+      <p id="parrafo">
+         Este es complicado. Convierte los divs en azules, pero en el orden de los números que contienen.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <div> 6 </div>
+      <div> 2 </div>
+      <div> 7 </div>
+      <div> 5 </div>
+      <div> 9 </div>
+      <div> 4 </div>
+      <div> 8 </div>
+      <div> 1 </div>
+      <div> 3 </div>
+
+   </main>
+
+   <main class="main2">
+
+      <div> 6 </div>
+      <div> 2 </div>
+      <div> 7 </div>
+      <div> 5 </div>
+      <div> 9 </div>
+      <div> 4 </div>
+      <div> 8 </div>
+      <div> 1 </div>
+      <div> 3 </div>
+
+   </main>
+
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      $.fn.blue = function () {
+         $(this).css({
+            backgroundColor: 'blue'
+         });
+      }
+
+      function main() {
+
+         console.time('main');
+         const main = $('.main');
+         const divs = main.children('div').get();
+
+         divs.sort(function (a, b) {
+            return $(a).text() - $(b).text();
+         });
+
+         $.each(divs, function (index, div) {
+            $(div).blue(); // Envolver el div en un objeto jQuery y aplicar la función blue
+            main.append(div); // Agregar cada div al contenedor
+         });
+         console.timeEnd('main');
+
+      }
+
+
+      function main2() {
+
+         console.time('main2');
+         const main = $('.main2');
+         const divs = main.children('div').get();
+         const sortedDivs = [];
+
+         divs.sort(function (a, b) {
+            return $(a).text() - $(b).text();
+         });
+
+         $.each(divs, function (index, div) {
+            $(div).blue(); // Envolver el div en un objeto jQuery y aplicar la función blue
+            sortedDivs.push(div); // Agregar el div al array
+         });
+
+         main.append(sortedDivs); // Hacer append del array de divs ordenados
+
+         console.timeEnd('main2');
+
+      }
+
+      //  -----  Llamada a las Funciones  -----
+      main();
+      main2();
+
+   </script>
+
+
+</body>
+
+</html>

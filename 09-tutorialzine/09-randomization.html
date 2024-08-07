@@ -1,0 +1,161 @@
+<!--  ***************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/09-tutorialzine/09-randomization.html  **********  -->
+<!--  ***************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 09-randomization.html - TutorialZine </title>
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main,
+      .main2 {
+         display: flex;
+         flex-direction: column;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 10px;
+         height: auto;
+      }
+
+      section {
+         display: flex;
+         justify-content: center;
+         flex-wrap: wrap;
+      }
+
+      #me,
+      div {
+         width: 100px;
+         height: 100px;
+         line-height: 100px;
+         text-align: center;
+         color: yellowgreen;
+         font-weight: bold;
+         border: 1px solid blue;
+         margin: 10px;
+      }
+
+      li {
+         list-style: none;
+      }
+
+      p {
+         text-align: center;
+      }
+
+      button {
+         width: 100px;
+         height: 30px;
+         background-color: red;
+         margin-top: 50px;
+         cursor: pointer;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 09-randomization.html - TutorialZine </h1>
+
+      <p id="parrafo">
+         Esta vez, el enemigo elegirá 5 identificadores aleatorios y los colocará en el elemento p.
+         Tu trabajo es analizar su contenido y convertir esos 5 elementos en azules.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <p id="map">
+         <!-- This paragraph will be populated with randomly generated IDs -->
+      </p>
+
+      <section>
+         <div id="edno"> edno </div>
+         <div id="dve"> dve </div>
+         <div id="tri"> tri </div>
+         <div id="chetiri"> chetiri </div>
+         <div id="pet"> pet </div>
+         <div id="shest"> shest </div>
+         <div id="sedem"> sedem</div>
+         <div id="osem"> osem </div>
+         <div id="devet">devet </div>
+         <div id="deset"> deset </div>
+      </section>
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      $.fn.blue = function () {
+         $(this).css({
+            backgroundColor: 'blue'
+         });
+      }
+
+
+      // Función para convertir los elementos en azul
+      function makeElementsBlue(ids) {
+         ids.forEach(function (id) {
+            $('#' + id).blue();
+         });
+      }
+
+      // Código del enemigo
+      var ids = 'edno dve tri chetiri pet shest sedem osem devet deset'.split(' ');
+
+      // Randomize the array (somewhat)
+      ids.sort(function () {
+         return .5 - Math.random();
+      });
+
+      $('#map').text(ids.slice(0, 5).join(' '));
+
+      // Esperar un poco para asegurarse de que el texto se ha actualizado
+      setTimeout(function () {
+         var idsToBlue = $('#map').text().split(' ');
+         makeElementsBlue(idsToBlue);
+      }, 100); // Esperar un poco para asegurar que el contenido de #map esté actualizado
+
+
+   </script>
+
+
+</body>
+
+</html>

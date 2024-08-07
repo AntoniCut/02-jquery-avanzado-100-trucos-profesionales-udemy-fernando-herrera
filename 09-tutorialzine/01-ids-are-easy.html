@@ -1,0 +1,95 @@
+<!--  **************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/09-tutorialzine/01-ids-are-easy.html  **********  -->
+<!--  **************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 01-ids-are-easy.html - TutorialZine </title>
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+      }
+
+      .main {
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 50px;
+      }
+
+      #me,
+      div {
+         width: 100px;
+         height: 100px;
+         border: 1px solid blue;
+         margin-top: 50px;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 01-ids-are-easy.html - TutorialZine </h1>
+
+      <p id="parrafo">
+         Tu desafío es hacer que el div #me sea azul. Como es tu primer proyecto, lo hicimos por ti.
+         Solo quita el comentario de la línea en la pestaña JS y presiona Ejecutar.
+         ¡Solo si la programación real fuera así de fácil!
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <div id="me"> </div>
+
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+      $.fn.blue = function () {
+         $(this).css({
+            backgroundColor: 'blue'
+         })
+      }
+
+      $("#me").blue();
+
+
+   </script>
+
+
+</body>
+
+</html>

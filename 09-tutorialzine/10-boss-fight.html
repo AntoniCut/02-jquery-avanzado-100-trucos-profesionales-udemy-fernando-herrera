@@ -1,0 +1,180 @@
+<!--  ************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/09-tutorialzine/10-boss-fight.html  **********  -->
+<!--  ************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 10-boss-fight.html - TutorialZine </title>
+
+   <style>
+      body {
+         overflow: hidden;
+      }
+
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main,
+      .main2 {
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: center;
+         gap: 10px;
+         height: auto;
+      }
+
+      section {
+         display: flex;
+      }
+
+      #me,
+      div {
+         width: 100px;
+         height: 100px;
+         line-height: 100px;
+         text-align: center;
+         color: yellowgreen;
+         font-weight: bold;
+         border: 1px solid blue;
+         margin: 10px;
+      }
+
+      li {
+         list-style: none;
+      }
+
+      button {
+         width: 100px;
+         height: 30px;
+         background-color: red;
+         margin-top: 50px;
+         cursor: pointer;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 10-boss-fight.html - TutorialZine </h1>
+
+      <p id="parrafo">
+         ¡Buen trabajo, soldado! Estamos impresionados. Has llegado al nivel que convierte a los hombres en héroes.
+         Tu misión es hacer que todos los divs de la página sean azules,
+         pero ten cuidado: hay dos jefes que mueven bombas. ¿Podrás derrotarlos?
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <!-- Make all divs blue! -->
+
+      <div class="bomb"> bomba </div>
+      <div> </div>
+      <div> </div>
+      <div> </div>
+      <div> </div>
+      <div class="bomb"> bomba </div>
+      <div> </div>
+      <div> </div>
+      <div> </div>
+      <div> </div>
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      $.fn.blue = function () {
+         $(this).css({
+            backgroundColor: 'blue'
+         });
+      }
+
+
+      // Función para hacer todos los divs azules
+      function makeAllDivsBlue() {
+         $('div').not('.bomb').blue('blue');
+      }
+
+      // Simular los jefes que mueven bombas
+      var delay = 0;
+      var divs = $('div');
+      var position1 = 0;
+      var position2 = 5;
+
+      // Boss 1
+      setTimeout(function moveBomb1() {
+         evil.disarmBomb(divs.eq(position1));
+
+         setTimeout(function () {
+            position1++;
+
+            if (position1 >= divs.length) {
+               position1 = 0;
+            }
+
+            evil.unBlue(divs.eq(position1));
+            evil.armBomb(divs.eq(position1));
+
+            setTimeout(moveBomb1, 500);
+         }, 100);
+      }, delay);
+
+
+      // Boss 2
+      setTimeout(function moveBomb2() {
+         evil.disarmBomb(divs.eq(position2));
+
+         setTimeout(function () {
+            position2++;
+
+            if (position2 >= divs.length) {
+               position2 = 0;
+            }
+
+            evil.unBlue(divs.eq(position2));
+            evil.armBomb(divs.eq(position2));
+
+            setTimeout(moveBomb2, 500);
+         }, 100);
+      }, 50);
+
+      // Esperar un poco para asegurarse de que las bombas han sido manejadas y luego hacer que todos los divs sean azules
+      setTimeout(makeAllDivsBlue, 2000); // Ajusta el tiempo si es necesario
+
+
+   </script>
+
+
+</body>
+
+</html>
