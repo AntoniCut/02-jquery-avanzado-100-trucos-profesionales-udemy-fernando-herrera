@@ -1,5 +1,5 @@
 <!--  *********************************************************************************************  -->
-<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/034/index.html.html  **********  -->
+<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/036/index.html.html  **********  -->
 <!--  *********************************************************************************************  -->
 
 
@@ -8,7 +8,7 @@
 
 <head>
    <meta charset="utf-8">
-   <title> 034.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+   <title> 036.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
 
    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
    <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
    <!--  **********  Header o Cabecera  **********  -->
    <header class="header">
 
-      <h1> 034.html - Desplegar el tamaño de los archivos a descargar </h1>
+      <h1> 036.html - Ejecutar Multiples Peticiones AJAX en Paralelo </h1>
 
       <hr>
 
@@ -53,10 +53,6 @@
    <!--  **********  Contenido  **********  -->
    <main class="main">
 
-      <br>
-      <a class="fetchSize" href="../../02-jquery-avanzado-manipulacion-dom/001.html"> Archivo 001.html </a> <br>
-      <a class="fetchSize" href="index.html"> Archivo 034/index.html </a> <br>
-      <a class="fetchSize" href="../asset/img/ball.png"> Ball </a> <br>
 
    </main>
 
@@ -71,40 +67,25 @@
       //  -----  Documento Cargdo  -----
       console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
 
-      //  -----  Obtener el Tamaño de los archivos  -----
-      $('a.fetchSize').each(function () {
 
-         const link = this;
+      //  -----  Peticiones asincronas en paralelo  -----
+      $.when($.get('../asset/data/1.json'), $.get('../asset/data/2.json'))
 
-         $.ajax({
-            type: 'HEAD',
-            url: link.href,
-            complete: function (xhr) {
+         .then(function (r1, r2) {
 
-               let size = xhr.getResponseHeader('content-length');
-               size = humanizar(size);
+            console.log(r1, r2)
+            r1 = r1[0];
+            r2 = r2[0];
+            const mensaje = r1.mensaje + " " + r2.nombre + " de edad " + r2.edad;
 
-               //  append a los links.
-               $(link).append('(' + size + ')');
-            }
-         });
-      });
-
-
-      function humanizar(size) {
-
-         const unidades = ['bytes', 'KB', 'MB', 'GB', 'TB'];
-
-         let ord = Math.floor(Math.log(size) / Math.log(1024));
-         ord = Math.min(Math.max(0, ord), unidades.length - 1);
-
-         const s = Math.round((size / Math.pow(1024, ord)) * 100) / 100;
-         return s + ' ' + unidades[ord]
-      }
+            console.log(mensaje);
+         })
+         .catch(function (err) {
+            console.log("error!!!!")
+         })
 
 
    </script>
-
 
 </body>
 

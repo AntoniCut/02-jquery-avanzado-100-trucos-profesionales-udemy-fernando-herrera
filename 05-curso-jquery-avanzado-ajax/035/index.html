@@ -1,5 +1,5 @@
 <!--  *********************************************************************************************  -->
-<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/034/index.html.html  **********  -->
+<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/035/index.html.html  **********  -->
 <!--  *********************************************************************************************  -->
 
 
@@ -8,7 +8,7 @@
 
 <head>
    <meta charset="utf-8">
-   <title> 034.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+   <title> 035.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
 
    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
    <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
    <!--  **********  Header o Cabecera  **********  -->
    <header class="header">
 
-      <h1> 034.html - Desplegar el tamaño de los archivos a descargar </h1>
+      <h1> 035.html - Simplificar las Peticiones AJAX </h1>
 
       <hr>
 
@@ -71,40 +71,18 @@
       //  -----  Documento Cargdo  -----
       console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
 
-      //  -----  Obtener el Tamaño de los archivos  -----
-      $('a.fetchSize').each(function () {
-
-         const link = this;
-
-         $.ajax({
-            type: 'HEAD',
-            url: link.href,
-            complete: function (xhr) {
-
-               let size = xhr.getResponseHeader('content-length');
-               size = humanizar(size);
-
-               //  append a los links.
-               $(link).append('(' + size + ')');
-            }
+      
+      //  -----  Acceder con el metodo 'get' al contenido de un archivo  -----
+      $.get('../asset/data/1.json')
+         .done(function(r) {
+            console.log(r.mensaje);
+         })
+         .fail( function(err) {
+            console.log('El archivo no existe!');
          });
-      });
 
-
-      function humanizar(size) {
-
-         const unidades = ['bytes', 'KB', 'MB', 'GB', 'TB'];
-
-         let ord = Math.floor(Math.log(size) / Math.log(1024));
-         ord = Math.min(Math.max(0, ord), unidades.length - 1);
-
-         const s = Math.round((size / Math.pow(1024, ord)) * 100) / 100;
-         return s + ' ' + unidades[ord]
-      }
-
-
+         
    </script>
-
 
 </body>
 
