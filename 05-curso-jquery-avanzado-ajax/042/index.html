@@ -1,0 +1,109 @@
+<!--  *********************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/042/index.html.html  **********  -->
+<!--  *********************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 042.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <!-- <link rel="stylesheet" href="../asset/css/bootstrap.min.css"> -->
+   <!-- <link rel="stylesheet" href="../asset/css/estilo.css"> -->
+
+   <style>
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main {
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 042.html - Obtener Información del Clima </h1>
+
+      <hr>
+
+      <p id="parrafo">
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <br> <br>
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      //  -----  jquery-api-clima  -----  ==>  {6c3f1a432f9f14192e97ab41d3e54bde}         
+      const appid = '6c3f1a432f9f14192e97ab41d3e54bde';
+      
+
+      const url = 'https://api.openweathermap.org/data/2.5/weather?id=524901&lang=fr&appid='+appid;
+     
+      $.get(url, function (r) {
+
+         console.log("\n*****  Peticion GET de la API del Clima  *****")
+         console.log("API: ", r);
+         console.log("Base: ", r.base);
+         console.log("Nubes: ", r.clouds.all);
+         console.log("Temperatura: ", r.main.temp - 273.15);
+
+      });
+
+      
+      const urlJSON = 'https://api.openweathermap.org/data/2.5/weather?id=524901&lang=fr&appid=' + appid + '&callback=?';
+
+      $.getJSON(urlJSON, function (r) {
+
+         console.log("\n*****  Peticion GETJSON de la API del Clima  *****");
+         console.log("API: ", r);
+         console.log("Base: ", r.base);
+         console.log("Nubes: ", r.clouds.all);
+         console.log("Temperatura: ", r.main.temp - 273.15);
+
+      });
+
+
+   </script>
+
+</body>
+
+</html>

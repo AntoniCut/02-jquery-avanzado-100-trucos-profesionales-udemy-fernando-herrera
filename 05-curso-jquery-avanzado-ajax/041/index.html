@@ -1,0 +1,89 @@
+<!--  *********************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/041/index.html.html  **********  -->
+<!--  *********************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 041.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <!-- <link rel="stylesheet" href="../asset/css/bootstrap.min.css"> -->
+   <!-- <link rel="stylesheet" href="../asset/css/estilo.css"> -->
+
+   <style>
+      
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main {
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 041.html - Obteniendo la Fotografia de una Página de Facebook </h1>
+
+      <hr>
+
+      <p id="parrafo">
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <br> <br>
+      <img src="" width="600" height="400"> 
+
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      const pagina = 'antonicut';
+      // const url = 'https:www.facebook.com/'+ pagina + '/picture/type=large';
+      const url = 'https://antonydev.es/pruebas/img/toni_fox.jpg';
+
+      $('img').attr('src', url);
+         
+
+   </script>
+
+</body>
+
+</html>
