@@ -1,0 +1,132 @@
+<!--  *********************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/044/index.html.html  **********  -->
+<!--  *********************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 044.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <!-- <link rel="stylesheet" href="../asset/css/bootstrap.min.css"> -->
+   <!-- <link rel="stylesheet" href="../asset/css/estilo.css"> -->
+
+   <style>
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main {
+         height: 80vh; 
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-items: center;
+      }
+
+      #posts {
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         gap: 50px;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .post {
+         display: flex;
+         flex-direction: column;
+         padding: 10px;
+         border: 1px solid green;
+         background-color: antiquewhite;
+      }
+
+      img {
+         width: 200px;
+         height: 150px;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 044.html - Encontrar la Ubicación geografica de una Dirección IP </h1>
+
+      <hr>
+
+      <p id="parrafo">
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <br> <br>
+
+      <div id="posts">
+
+         <!--  ----------  Renderizado de POSTS  ----------  -->
+
+      </div>
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+      const ip = '';
+      const api = 'https://geoip.nozbe.com/json/' + ip + '?callback=?';
+
+      $.getJSON( api, function(r) {
+
+         console.log("Dirección IP: ", r.ip);
+         console.log("Codigo del Pais: ", r.country_code);
+         console.log("Region: ", r.region_name);
+         console.log("Codigo Postal: ", r.zip_code);
+         console.log("Latitud:", r.latitude);
+         console.log("Longitud: ", r.longitude);
+      });
+
+      /*
+      "ip":217.198.193.0", 
+      "country_code":ES", "country_name":España", 
+      "region_code":VC", "region_name":Valencia", 
+      "city":", "zip_code":03189", 
+      "time_zone":Europe/Madrid", 
+      "latitude":37.9305", 
+      "longitude":-0.7532", 
+      "metro_code":0});
+      */
+      
+   </script>
+
+</body>
+
+</html>

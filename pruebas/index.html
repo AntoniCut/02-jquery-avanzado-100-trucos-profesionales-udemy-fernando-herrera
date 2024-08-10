@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        pre {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    1. The DOM Ready Event
+    The first step to manipulating the DOM is subscribing to the DOM Ready event. This is not only a matter of
+    convention – the event is fired only when all page elements are present and accessible, so your jQuery selectors
+    actually return anything. But do you know that there is a neat way to subscribe to the ready event that works
+    consistently cross-browser and doesn't even depend on jQuery? Here is how to do it:
+
+    <pre>
+        // with jQuery
+        $(document).ready(function(){ /* ... */ });
+        // shorter jQuery version
+        $(function(){ /* ... */ });
+        // without jQuery (doesn't work in older IEs)
+        document.addEventListener('DOMContentLoaded', function(){
+        // your code goes here
+        }, false);
+        // and here's the trick (works everywhere):
+        r(function(){
+        alert('DOM Ready!');
+        });
+        function r(f){/in/.test(document.readyState)?setTimeout('r('+f+')',9):f()}
+    </pre>
+
+    The trick here, as explained by the o riginal author, is that we are checking the document.readyState property.
+    If it contains the string in (as in Loading) we set a timeout and check again. Otherwise we execute the passed
+    function.
+
+
+    
+
+</body>
+
+</html>

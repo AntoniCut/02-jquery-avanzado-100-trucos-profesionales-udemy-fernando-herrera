@@ -1,0 +1,158 @@
+<!--  *********************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/043/index.html.html  **********  -->
+<!--  *********************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 043.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+   <!-- <link rel="stylesheet" href="../asset/css/bootstrap.min.css"> -->
+   <!-- <link rel="stylesheet" href="../asset/css/estilo.css"> -->
+
+   <style>
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+
+      }
+
+      .main {
+         height: 80vh; 
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-items: center;
+      }
+
+      #posts {
+         display: flex;
+         flex-direction: row;
+         flex-wrap: wrap;
+         gap: 50px;
+         justify-content: center;
+         align-items: center;
+      }
+
+      .post {
+         display: flex;
+         flex-direction: column;
+         padding: 10px;
+         border: 1px solid green;
+         background-color: antiquewhite;
+      }
+
+      img {
+         width: 200px;
+         height: 150px;
+      }
+   </style>
+
+</head>
+
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 043.html - Obtener el Ultimo Post de Tumblir de un Blog </h1>
+
+      <hr>
+
+      <p id="parrafo">
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <br> <br>
+
+      <div id="posts">
+
+         <!--  ----------  Renderizado de POSTS  ----------  -->
+
+      </div>
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      //  -----  Documento Cargdo  -----
+      console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+      function peticionGetJSON_1() {
+
+         const blog = 'urlgold.tumblr.com';
+         const post = $("#posts");
+         const api = 'http://' + blog + '/api/read/json?callback=?';
+
+         //  -----  Solicitud de getJSON  -----
+         $.getJSON(api, function (r) {
+
+            console.warn("Peticion getJSON 1 -----  Toda la Información: ", r);
+
+            console.log("Titulo:", r.tumblelog.title);
+            console.log("Titulo:", r.tumblelog.description);
+
+            if (r.posts[0]['photo-url-250']) {
+               console.log(r.posts[0]['photo-url-250']);
+               post.append('<img src="' + r.posts[0]['photo-url-250'] + '"/>');
+            }
+
+         });
+      }
+
+
+      function peticionGetJSON_2() {
+
+         const url = 'https://reqres.in/api/users';
+         const posts = $("#posts");
+
+         $.getJSON(url, function (r) {
+
+            console.warn("\nPetición getJSON 2 ----- Toda la Información:", r);
+
+            let personas = r.data; // Accede a la lista de usuarios en `data.data`
+            personas.forEach(persona => {
+               $(posts).append(`
+                  <div class='post'>
+                     <h4> id: ${persona.id} - name: ${persona.first_name} apellido: ${persona.last_name} </h4>
+                     <img src="${persona.avatar}">
+                  </div>
+               `);
+            });
+         });
+      }
+
+
+      peticionGetJSON_1();
+      peticionGetJSON_2();
+
+
+   </script>
+
+</body>
+
+</html>
