@@ -1,5 +1,5 @@
 <!--  *********************************************************************************************  -->
-<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/044/index.html.html  **********  -->
+<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/046/index.html.html  **********  -->
 <!--  *********************************************************************************************  -->
 
 
@@ -8,10 +8,10 @@
 
 <head>
    <meta charset="utf-8">
-   <title> 044.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+   <title> 046.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
 
    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
-   <!-- <link rel="stylesheet" href="../asset/css/bootstrap.min.css"> -->
+   <link rel="stylesheet" href="../asset/css/bootstrap.min.css">
    <!-- <link rel="stylesheet" href="../asset/css/estilo.css"> -->
 
    <style>
@@ -28,36 +28,44 @@
       .main {
          height: 80vh;
          display: flex;
-         flex-direction: row;
+         flex-direction: column;
          flex-wrap: wrap;
          justify-content: center;
          align-items: center;
+         text-align: center;
+      }
+
+      #preloader {
+         display: none;
+      }
+
+      img {
+         width: 400px;         
       }
    </style>
-
 </head>
-
 
 <body>
 
    <!--  **********  Header o Cabecera  **********  -->
    <header class="header">
 
-      <h1> 044.html - Encontrar la Ubicación geografica de una Dirección IP </h1>
-
+      <h1> 046.html - Usando los Métodos Globales de AJAX </h1>
       <hr>
 
       <p id="parrafo">
          Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
          creada.
       </p>
-
    </header>
 
    <!--  **********  Contenido  **********  -->
    <main class="main">
 
-      <br> <br>
+      <div id="preloader" class="text-center">
+         <img src="../asset/img/preloader.gif">
+      </div>
+
 
    </main>
 
@@ -69,32 +77,46 @@
    <!-- ----------  Código de jQuery  ----------   -->
    <script>
 
-      //  -----  Documento Cargdo  -----
       console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
 
-      const ip = '';
-      const api = 'https://geoip.nozbe.com/json/' + ip + '?callback=?';
 
-      $.getJSON(api, function (r) {
+      //  -----  Referencias al HTML  -----
+      const preloader = $("#preloader");
+      const doc = $(document);
 
-         console.log("Dirección IP: ", r.ip);
-         console.log("Codigo del Pais: ", r.country_code);
-         console.log("Region: ", r.region_name);
-         console.log("Codigo Postal: ", r.zip_code);
-         console.log("Latitud:", r.latitude);
-         console.log("Longitud: ", r.longitude);
+
+      //  -----  ajaxStart se dispara cuando se haga una petición AJAX  -----
+      doc.ajaxStart(function () {
+
+         preloader.fadeIn();
       });
 
-      /*
-      "ip":217.198.193.0", 
-      "country_code":ES", "country_name":España", 
-      "region_code":VC", "region_name":Valencia", 
-      "city":", "zip_code":03189", 
-      "time_zone":Europe/Madrid", 
-      "latitude":37.9305", 
-      "longitude":-0.7532", 
-      "metro_code":0});
-      */
+      //  -----  ajaxCompleted se dispara cuando se Terminan las peticiónes AJAX  -----
+      doc.ajaxComplete(function () {
+
+         preloader
+            .delay(3000)
+            .fadeOut();
+
+         console.log('Peticion AJAX Terminadas');
+         //alert('Peticiones AJAX Terminadas');
+
+      });
+
+
+      //  -----  Peticiónes GET  -----
+      $.get("../asset/data/1.json", function (r) {
+
+         console.log(r);
+      });
+
+      //  -----  Peticiónes GET  -----
+      $.get("../asset/data/2.json", function (r) {
+
+         console.log(r);
+      });
+
+
 
    </script>
 

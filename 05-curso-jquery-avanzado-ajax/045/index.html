@@ -1,0 +1,100 @@
+<!--  *********************************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/05-jquery-avanzado-ajax/045/index.html.html  **********  -->
+<!--  *********************************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+   <meta charset="utf-8">
+   <title> 045.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+   <style>
+      .header {
+         width: 100%;
+         height: 150px;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+         border: 1px solid green;
+      }
+
+      .main {
+         height: 80vh;
+         display: flex;
+         flex-direction: column;
+         flex-wrap: wrap;
+         justify-content: center;
+         align-items: center;
+         text-align: center;
+      }
+
+      .cat-image {
+         max-width: 400px;
+         margin-top: 20px;
+      }
+   </style>
+</head>
+
+<body>
+
+   <!--  **********  Header o Cabecera  **********  -->
+   <header class="header">
+
+      <h1> 045.html - APIs Públicas </h1>
+      <hr>
+
+      <p id="parrafo">
+         Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y completamente
+         creada.
+      </p>
+   </header>
+
+   <!--  **********  Contenido  **********  -->
+   <main class="main">
+
+      <div>
+         <h2> Información del Gato: </h2>
+         <p> <strong> ID: </strong> <span id="cat-id">Cargando... </span> </p>
+         <p> <strong> Peso: </strong> <span id="cat-weight"> Cargando... </span> </p>
+         <img id="cat-image" class="cat-image" src="" alt="Imagen del gato" />
+      </div>
+
+   </main>
+
+
+   <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+   <!-- ----------  Código de jQuery  ----------   -->
+   <script>
+
+      $(document).ready(function () {
+         
+         console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+         // Petición GET a la API de The Cat API
+         $.get('https://api.thecatapi.com/v1/images/0XYvRd7oD', function (response) {
+            
+            console.log("Datos: ", response);
+
+            // Actualizar el DOM con los datos recibidos
+            $('#cat-id').text(response.id);
+            $('#cat-weight').text(response.breeds[0].weight.imperial + ' libras');
+            $('#cat-image').attr('src', response.url);
+
+         }).fail(function () {
+            // En caso de error
+            $('#cat-id').text('Error al cargar los datos.');
+            $('#cat-weight').text('Error al cargar los datos.');
+         });
+      });
+
+
+   </script>
+
+</body>
+
+</html>
