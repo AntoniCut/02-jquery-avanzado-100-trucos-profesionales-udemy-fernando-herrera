@@ -1,0 +1,112 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/049.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 049.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="./asset/css/estilo.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #preloader {
+            display: none;
+        }
+
+        img {
+            width: 400px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 049.html - Usa Funciones Anonimas para Aislar el Código </h1>
+        <hr>
+
+        <p id="parrafo">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <button> Contar </button>
+
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+        var c = 1;
+
+        (function () {
+
+            var c = 1;
+
+            $.fn.count = function () {
+                console.log(c++);
+                return this;
+            }
+
+            $('button').on('click', function () {
+                $('body').count();
+            });
+
+
+        })(jQuery);
+
+
+        setInterval(function () {
+            c++;
+        }, 500);
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/047.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 047.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="./asset/css/estilo.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #preloader {
+            display: none;
+        }
+
+        img {
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 047.html - Aprendiendo a Querer la Consola </h1>
+        <hr>
+
+        <p id="parrafo">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+        console.log('Aprendiendo a querer la Consola...');
+
+        //  ----------
+        const  a = 'buenos', b = 'dias';
+        console.log("Hola, %s %s.", a, b);
+
+        //  ----------
+        console.dir(window);
+
+        //  -----
+        console.info('Informacion');
+        console.warn('Alerta');
+        console.error('oops, algo malo paso');
+
+        //  -----
+        for(let i=0; i<10; i++) console.count('Vamos por ');
+        
+        //  -----
+        console.group('Función main');
+        console.log('Vamos en Camino');
+        console.info('En Camino');
+        console.warn('Estamos Llegando');
+        console.error('Chocamos');
+        console.groupEnd('Función main');
+
+        //  -----
+        console.time('Medir el tiempo de este ciclo');
+        let numero = 0;
+        for( let i=0; i<100000; i++) numero += 10;
+        console.timeEnd('Medir el tiempo de este ciclo');
+
+    </script>
+
+</body>
+
+</html>

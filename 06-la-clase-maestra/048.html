@@ -1,0 +1,133 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/048.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 048.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="./asset/css/estilo.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #preloader {
+            display: none;
+        }
+
+        img {
+            width: 400px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 048.html - Convierte tu Código en Plugins para reusarlo Fácilmente </h1>
+        <hr>
+
+        <p id="parrafo">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+
+        <div class="col-md-6">
+
+            <!--  -----  Nombre  -----  -->
+            <label> Nombre </label>
+            <input type="text" id="txtnombre" class="form-control" placeholder="introduce Nombre" required>
+            <!-- <div class="text-danger"> Este campo es necesario. </div> -->
+
+            <br> <br>
+
+            <!--  -----  Apellido  -----  -->
+            <label> Apellido </label>
+            <input type="text" id="txtapellido" class="form-control" placeholder="introduce Apellido" required>
+
+        </div>
+
+        <br> <br>
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+        $.fn.requerido = function () {
+
+            const input = $(this);
+
+            // Remover mensajes de error cuando el campo obtiene el foco
+            input.on('focus', function () {
+                input.next('.text-danger').remove();  // Eliminar el mensaje de error, si existe.
+                input.parent().removeClass('has-danger');
+            });
+
+            // Validar el campo cuando pierda el foco
+            input.on('blur', function () {
+                if (input.val().length === 0) {
+                    mostrar_error(input);
+                }
+            });
+
+
+            function mostrar_error(input) {
+                let ayuda = '<div class="text-danger"> Este campo es requerido </div>';
+                if (input.next('.text-danger').length === 0) {  // Asegúrate de no duplicar mensajes
+                    input.after(ayuda);
+                }
+                input.parent().addClass('has-danger');
+            }
+        }
+
+
+        $('#txtnombre').requerido();
+        $('#txtapellido').requerido();
+
+    </script>
+
+</body>
+
+</html>
