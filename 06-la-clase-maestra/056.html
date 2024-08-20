@@ -1,0 +1,120 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/056.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 056.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            height: 80vh;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* align-items: center; */
+            /* text-align: center; */
+            margin-top: 100px;
+            gap: 100px;
+        }
+
+        .cuadrado1 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            /* display: none; */
+        }
+
+        .cuadrado2 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* display: none; */
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 056.html - Llamar Métodos de jQuery Condicionalmente </h1>
+        <hr>
+
+        <p id="parrafo">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <div class="cuadrado1"> </div>
+        <div class="cuadrado2"> </div>
+
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- small-notification.js  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./asset/libs/small-notification.js"> </script>
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+        const elemento1 = $('.cuadrado1');
+        const elemento2 = $('.cuadrado2');
+        const direccion = 'arriba';          //  arriba - abajo
+        
+
+        if(direccion === "arriba") elemento1.slideUp();
+        else {
+             elemento1.attr('style', 'display: none;');
+             elemento1.slideDown();
+         }
+
+        
+        elemento2[direccion === 'arriba' ? 
+            'slideUp' : 
+            ( elemento2.attr('style', 'display: none;'),  'slideDown')
+        ]();
+
+
+
+
+
+        
+
+    </script>
+
+</body>
+
+</html>

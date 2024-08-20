@@ -1,0 +1,117 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/052.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 052.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            /* justify-content: center; */
+            align-items: center;
+            /* text-align: center; */
+            margin-top: 100px;
+        }
+
+        ul li{
+            list-style: none;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 052.html - El Metodo Map() </h1>
+        <hr>
+
+        <p id="parrafo">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <ul>
+            <li> <input type="checkbox" value="lunes" class="dia" checked> lunes </li>
+            <li> <input type="checkbox" value="martes" class="dia" checked> Martes </li>
+            <li> <input type="checkbox" value="miercoles" class="dia" checked> Miercoles </li>
+            <li> <input type="checkbox" value="jueves" class="dia" checked> Jueves </li>
+            <li> <input type="checkbox" value="viernes" class="dia"> Viernes </li>
+            <li> <input type="checkbox" value="sabado" class="dia"> Sabado </li>
+            <li> <input type="checkbox" value="domingo" class="dia"> Domingo </li>
+        </ul>
+
+        <p id="dias-laborales"> </p>
+        
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- small-notification.js  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./asset/libs/small-notification.js"> </script>
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+        const checkboxed = $('.dia');
+        const mensaje = $("#dias-laborales");
+
+
+        function callback() {
+
+            console.log('Se disparó')
+            
+            const dias = checkboxed.filter(':checked').map(function() {     //  map() regresa un arreglo
+                return $(this).val();
+            }).get();
+
+            console.log("Dias: ", dias);
+            
+            if(dias.length > 0) mensaje.text('He seleccionado: ' + dias.join(', '));
+            else mensaje.text('No hay ningun dia seleccionado');
+        }
+
+        checkboxed.on('click', callback);
+
+        callback();
+   
+        
+    </script>
+
+</body>
+
+</html>

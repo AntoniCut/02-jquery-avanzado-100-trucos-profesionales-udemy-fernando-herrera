@@ -1,0 +1,114 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/055.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 055.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            /* justify-content: center; */
+            align-items: center;
+            /* text-align: center; */
+            margin-top: 100px;
+        }
+
+        ul li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 055.html - Deferido $.Deferer() / Promesas de jQuery </h1>
+        <hr>
+
+        <p id="parrafo">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- small-notification.js  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./asset/libs/small-notification.js"> </script>
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+        //  ----------  PROMESAS DE jQuery  ----------
+
+        function JSON_Reader(archivo) {
+
+            const d = new $.Deferred();
+
+            //  -----  Petición AJAX  -----
+            $.ajax({
+                url: 'asset/data/' + archivo + '.json',
+                dataType: 'json',
+                success: function (data) {
+                    d.resolve(data);
+                },
+                error: function () {
+                    d.reject();
+                }
+            })
+
+            return d.promise();     //  devuelve una promesa.
+        }
+
+        //  -----  Mostrar los Resultados de la Petición AJAX  -----
+        const resultado = JSON_Reader('1');
+
+        resultado.done(function (data) {
+            console.log('Data Recibida: ', data);
+        });
+
+        resultado.fail(function (data) {
+            console.error('El Archivo No Existe o No Se Encuentra!!!');
+        });
+
+    </script>
+
+</body>
+
+</html>

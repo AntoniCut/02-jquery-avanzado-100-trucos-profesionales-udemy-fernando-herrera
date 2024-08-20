@@ -1,0 +1,116 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/051.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 051.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 051.html - Uso de la Función $.type </h1>
+        <hr>
+
+        <p id="parrafo">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- small-notification.js  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./asset/libs/small-notification.js"> </script>
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+        let numero = 123;
+        numero = "123"
+        numero = true;
+        numero = {};
+        numero = [];
+        numero = [{}];
+        numero = [[{}]];
+
+        console.log("typeof de null: ", typeof null);
+        console.log("$.type de null: ", $.type(null));
+        console.log("\n");
+
+        console.log("typeof de undefined: ", typeof undefined);
+        console.log("$.type de undefined: ", $.type(undefined));
+        console.log("\n");
+
+        console.log("typeof de 'abc': ", typeof 'abc');
+        console.log("$.type de 'abc': ", $.type('abc'));
+        console.log("\n");
+
+        console.log("typeof de 123: ", typeof 123);
+        console.log("$.type de 123: ", $.type(123));
+        console.log("\n");
+
+        console.log("typeof de []: ", typeof []);
+        console.log("$.type de []: ", $.type([]));
+        console.log("\n");
+
+        console.log("typeof de /abc/: ", typeof /abc/);
+        console.log("$.type de /abc/: ", $.type(/abc/));
+        console.log("\n");
+        
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
