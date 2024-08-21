@@ -1,5 +1,5 @@
 <!--  ******************************************************************************  -->
-<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/056.html  **********  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/057.html  **********  -->
 <!--  ******************************************************************************  -->
 
 
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> 056.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+    <title> 057.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
 
     <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
     <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
@@ -25,32 +25,28 @@
         }
 
         .main {
-            height: 80vh;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-wrap: wrap;
             justify-content: center;
-            /* align-items: center; */
+            align-items: center; 
             /* text-align: center; */
-            margin-top: 100px;
-            gap: 100px;
+            margin-top: 20px;
+            gap: 10px;
         }
 
-        .cuadrado1 {
-            width: 100px;
-            height: 100px;
-            background-color: blue;
-            /* display: none; */
+        .botones {
+            display: flex;
+            gap: 50px;
         }
 
-        .cuadrado2 {
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            /* display: none; */
+        button {
+            margin-bottom: 20px;
         }
+      
 
     </style>
+
 </head>
 
 
@@ -59,7 +55,7 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> 056.html - Llamar Métodos de jQuery Condicionalmente </h1>
+        <h1> 057.html - Convertir una Imagen en Blanco y Negro </h1>
         <hr>
 
         <p id="parrafo">
@@ -74,9 +70,12 @@
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <div class="cuadrado1"> </div>
-        <div class="cuadrado2"> </div>
-
+        <div class="botones">
+            <button type="button" id="btn"> Blanco y Negro </button>
+            <button id="original"> Original </button>
+        </div>
+        
+        <canvas id="can" width="220" height="319"> </canvas>
 
     </main>
 
@@ -90,22 +89,43 @@
 
         console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
 
-        const elemento1 = $('.cuadrado1');
-        const elemento2 = $('.cuadrado2');
-        const direccion = 'abajo';          //  arriba - abajo
+        //  -----  Referencias al HTML  -----
+        const $img = $("<img>");
+        const $boton = $("#btn");
+        const $original = $("#original");
+        const $canvas = $("#can")[0];
+        const $context = $canvas.getContext('2d');
         
+        $img.on('load', function() {
 
-        if(direccion === "arriba") elemento1.slideUp();
-        else {
-             elemento1.attr('style', 'display: none;');
-             elemento1.slideDown();
-         }
+            $context.drawImage( this, 0, 0);
 
+        });
+
+        $img.attr('src', 'asset/img/Katy_Perry.jpg');
         
-        elemento2[direccion === 'arriba' ? 
-            'slideUp' : 
-            ( elemento2.attr('style', 'display: none;'),  'slideDown')
-        ]();
+        $boton.on('click', function() {
+
+            const imageData = $context.getImageData(0, 0, $canvas.width, $canvas.height);
+            const px = imageData.data;
+            let gray = 0;
+
+            for(let i=0; i<px.length; i += 4) {
+
+                gray = ( px[i] + px[i+1] + px[i+2]) / 3;
+                px[i] = gray;       //  red
+                px[i+1] = gray;     //  green
+                px[i+2] = gray;     //  blue
+
+            }
+
+            $context.putImageData(imageData, 0, 0);
+        });
+
+        $original.on('click', function() {
+            $img.attr('src', 'asset/img/Katy_Perry.jpg');
+
+        });
        
 
     </script>

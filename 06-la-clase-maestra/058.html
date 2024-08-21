@@ -1,0 +1,143 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/058.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 058.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center; 
+            /* text-align: center; */
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .botones {
+            display: flex;
+            gap: 50px;
+        }
+
+        button {
+            margin-bottom: 20px;
+        }
+      
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 058.html - Listas de Callbacks </h1>
+        <hr>
+
+        <p id="parrafo">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <div class="botones">
+            <button id="btn1"> 1 </button>
+            <button id="btn2"> 2 </button>
+        </div>
+        
+        <input type="checkbox" id="checkBox" checked>
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- small-notification.js  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./asset/libs/small-notification.js"> </script>
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+        //  -----  Referencias al HTML  -----
+        const $boton1 = $("#btn1");
+        const $boton2 = $("#btn2");
+        const $checkBox = $("#checkBox");
+
+
+        //  ----------  Operaciones con el Boton 1  ----------
+
+        //  -----  Creamos un Callbacks  -----
+        const callbacks = $.Callbacks();
+        console.log(callbacks);
+
+        callbacks.add( function( mensaje) {
+            console.log(mensaje)
+        });
+
+        callbacks.add( function() {
+            console.log('----------')
+        });
+
+        $boton1.on('click', function() {
+            callbacks.fire('Linea 1');
+            callbacks.fire('Linea 2');
+            callbacks.fire('Linea 3');
+        });
+
+
+        //  ----------  Operaciones con el Boton 2  ----------
+
+        //  -----  Creamos otro Callbacks  -----
+        const callbacksFlag = $.Callbacks('stopOnFalse');
+        
+        callbacksFlag.add( function() {
+            console.log($checkBox.is(':checked'));
+            return $checkBox.is(':checked');
+        });
+
+        callbacksFlag.add( function() {
+            console.log('El Checkbox esta seleccionado');
+        });
+
+        $boton2.on('click', callbacksFlag.fire);
+
+
+        
+
+    </script>
+
+</body>
+
+</html>
