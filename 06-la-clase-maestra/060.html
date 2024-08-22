@@ -1,0 +1,162 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/060.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 060.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /*align-items: center; */
+            /* text-align: center; */
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .botones {
+            display: flex;
+            gap: 50px;
+        }
+
+        button {
+            margin-top: 200px;
+        }
+
+        #football1 {
+            position: fixed;
+        }
+
+        #football2 {
+            position: fixed;
+            left: 50%;
+            bottom: 500px;
+            opacity: 0;
+            z-index: 1000;
+            opacity: 0;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 060.html - Animaciones Personalizadas </h1>
+        <hr>
+
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main>
+
+        <button id="btnShow1"> Show1 </button>
+        <button id="btnHide1"> Hide1 </button>
+
+        <button id="btnShow2"> Show2 </button>
+        <button id="btnHide2"> Hide2 </button>
+
+        <img id="football1" src="asset/img/ball.png" /> <br><br><br>
+        <img id="football2" src="asset/img/ball.png" />
+
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- small-notification.js  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./asset/libs/small-notification.js"> </script>
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+        //  -----  Animación 1  -----
+        const $ball1 = $("#football1");
+        const $btnShow1 = $("#btnShow1");
+        const $btnHide1 = $("#btnHide1");
+
+        $btnShow1.on('click', function () {
+
+            $ball1.stop().animate({
+                bottom: 0,
+                right: 0
+            }, 1000, 'swing')      //  linear  -  swing  -  default
+        });
+
+        $btnHide1.on('click', function () {
+
+            $ball1.stop().animate({
+                opacity: 0,
+                bottom: 500,
+                left: 0
+            }, 1000, 'swing')      //  linear  -  swing  -  default
+        });
+
+
+        //  -----  Animación 2  -----
+        jQuery.easing.rebote = function (x, t, b, c, d) {
+            if ((t /= d) < (1 / 2.75)) return c * (7.5625 * t * t) + b;
+            else if (t < (2 / 2.75)) return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
+            else if (t < (2.5 / 2.75)) return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
+            else return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
+        };
+
+        const $ball2 = $("#football2");
+        const $btnShow2 = $("#btnShow2");
+        const $btnHide2 = $("#btnHide2");
+
+        $btnShow2.on('click', function () {
+
+            $ball2.stop().animate({
+                bottom: 0,
+                opacity: 1
+            }, 1500, 'rebote')      //  linear  -  swing  -  default
+        });
+
+        $btnHide2.on('click', function () {
+            $ball2.stop().animate({
+                opacity: 0,
+                bottom: 500
+            }, 1500, 'rebote')      //  linear  -  swing  -  default
+        });
+
+
+    </script>
+
+</body>
+
+</html>

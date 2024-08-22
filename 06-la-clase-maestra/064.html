@@ -1,0 +1,192 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/064.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 064.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /*align-items: center; */
+            /* text-align: center; */
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        #caja {
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            color: white;
+            background-color: blue;
+        }
+
+        button {
+            width: 150px;
+            height: 40px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 064.html - Enviar Callbacks a los Metodos de jQuery </h1>
+        <hr>
+
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main>
+
+        <br><br>
+
+        <input id="input1" style="width:60px;" type="text" />
+        <input id="input2" style="width:60px;" type="text" />
+        <input id="input3" style="width:60px;" type="text" />
+
+        <br><br>
+
+        <p class="lipsum"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+
+        <p class="lipsum"> Aenean dapibus turpis ut justo congue id sodales mi dignissim. </p>
+
+        <p class="lipsum"> In sed lorem elit, sit amet mollis enim. Integer at feugiat orci. </p>
+
+        <p class="lipsum"> Integer dignissim, neque eu varius dignissim, risus lacus accumsan tellus, eu rutrum felis
+            turpis sit amet felis. </p>
+
+        <p class="lipsum"> Proin tempus, tortor a sagittis auctor, urna felis ullamcorper tellus, vitae consectetur dui
+            ligula eget nisi. </p>
+
+        <p class="lipsum"> Proin tempus. </p>
+
+
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- small-notification.js  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+        $('input[type=text]').val(function () {
+            return this.id;
+        })
+
+        let p = $(".lipsum");
+
+        //  -----  Oculta los parrafos con la palabra lorem  -----
+        p.filter(function () {
+            return $(this).text().match(/lorem/i) != null;
+        }).hide();
+
+
+        //  -----  Poner el "Nº de Parrafo" ) - ""  al inicio de los parrafos los que estan visibles  -----
+        p = p.filter(':visible');
+
+        p.prepend(function (index) {
+            return (index + 1) + ") - ";
+        });
+
+        //  -----  Parrafos Pares un Color y Parrafos Impares Otro Color  -----
+        p.css('color', function (index) {
+            return index % 2 === 1 ? 'blue' : 'green'     //  pinta blue los pares y green los impares.
+        });
+
+        //  -----  Si el parrafo es de mas de 40 caracteres dividirlo en 2 partes  -----
+        p.html(function () {
+            const contenido = $(this).text();
+            if (contenido.length > 40) return contenido.slice(0, 40) + '...';
+        });
+
+        
+        //  -----  Saber los Párrafos que están en Verde  -----
+        console.log('El primer párrafo es verde???', p.first().is(function () {
+            console.log($(this).css('color'));
+
+            // Comparación de color verde en diferentes formatos: nombre de color, RGB, y hexadecimal.
+            return $(this).css('color').match(/green|rgb\(0,\s*128,\s*0\)|#00ff00/i);  // La 'i' es para que sea insensible a mayúsculas y minúsculas.
+        }));
+
+
+        //  -----  ahora el Siguiente parrafo  -----
+        console.log('El siguiente parrafo al primero es verde???', p.first().next().is(function () {
+            console.log($(this).css('color'));
+
+            // Comparación de color verde en diferentes formatos: nombre de color, RGB, y hexadecimal.
+            return $(this).css('color').match(/green|rgb\(0,\s*128,\s*0\)|#00ff00/i);  // La 'i' es para que sea insensible a mayúsculas y minúsculas.
+        }));
+
+
+        //  -----  ahora el Siguiente del siguiente parrafo  -----
+        console.log('El siguiente del siguiente parrafo al primero es verde???', p.first().next().next().is(function () {
+            console.log($(this).css('color'));
+
+            // Comparación de color verde en diferentes formatos: nombre de color, RGB, y hexadecimal.
+            return $(this).css('color').match(/green|rgb\(0,\s*128,\s*0\)|#00ff00/i);  // La 'i' es para que sea insensible a mayúsculas y minúsculas.
+        }));
+
+
+        //  -----  ahora de otra Forma  -----
+        console.log('El parrafo 0 es verde???', p.eq(0).is(function () {
+            console.log($(this).css('color'));
+
+            // Comparación de color verde en diferentes formatos: nombre de color, RGB, y hexadecimal.
+            return $(this).css('color').match(/green|rgb\(0,\s*128,\s*0\)|#00ff00/i);  // La 'i' es para que sea insensible a mayúsculas y minúsculas.
+        }));
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

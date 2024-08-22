@@ -1,0 +1,146 @@
+<!--  ******************************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/06-la-clase-maestra/059.html  **********  -->
+<!--  ******************************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 059.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            /* text-align: center; */
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .botones {
+            display: flex;
+            gap: 50px;
+        }
+
+        button {
+            margin-bottom: 20px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 059.html - Crear Pseudo Selectores Personalizados </h1>
+        <hr>
+
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <p class="lipsum">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt at incidunt minima, debitis perspiciatis
+            necessitatibus qui tenetur molestias deleniti adipisci sit voluptas facilis repellat odio molestiae alias?
+            Veritatis, eos. Quis.
+        </p>
+
+        <p class="lipsum">
+            Quasi, dignissimos! Facilis praesentium sapiente impedit consequatur nesciunt dolorem minus maxime expedita?
+            Accusantium quae corporis voluptate quasi facere voluptas et, quia magni eum doloremque suscipit ad labore
+            at cupiditate. Quisquam placeat, repellendus assumenda molestiae accusantium corrupti tenetur illum, ipsam
+            tempora, repudiandae laboriosam!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque temporibus maiores quos nihil rerum sit
+            doloribus dolores nesciunt, quod iusto inventore vel eum! Ad, maiores. Perspiciatis iure ullam perferendis
+            nihil.
+        </p>
+
+
+        <p class="lipsum">
+            Quae mollitia praesentium quo alias eos necessitatibus, error voluptate tenetur dignissimos sequi non esse?
+            Dolore aspernatur voluptatem laboriosam, perferendis dolorum obcaecati adipisci in incidunt corrupti
+            delectus, expedita, officia labore quisquam.
+            Repellat atque incidunt eveniet nesciunt consequatur minima porro odit! Temporibus quibusdam explicabo
+            corrupti.
+        </p>
+
+        <p class="lipsum">
+            away, cum perferendis veniam ipsum similique distinctio minus iure libero porro voluptas dolore corporis
+            eveniet possimus quasi laboriosam!
+            Iste perspiciatis dolorum quod laborum vero molestiae nam cum ex voluptas fuga, modi animi corporis
+            assumenda esse ipsum.
+        </p>
+
+        <p class="lipsum">
+            Quasi, dignissimos! Facilis praesentium sapiente impedit consequatur nesciunt dolorem minus maxime expedita?
+            Accusantium quae corporis voluptate quasi facere voluptas et, quia magni eum doloremque suscipit ad labore
+            at cupiditate. Quisquam placeat, repellendus assumenda molestiae accusantium corrupti tenetur illum, ipsam
+            tempora, repudiandae laboriosam!
+        </p>
+
+
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- small-notification.js  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./asset/libs/small-notification.js"> </script>
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+        
+        //  -----  Creación de Pseudo Elementos  -----
+        $.expr.pseudos.contienen = $.expr.createPseudo(function (texto) {
+
+            return function (elem) {
+
+                return (elem.textContent || elem.innerText || jQuery(elem).text() || '')
+                .toLowerCase()
+                .indexOf( texto.toLowerCase()) >= 0;        //  Busca la posicion de un elemento en una cadena.
+            }
+        });
+
+        const elementos = $(".lipsum:contienen(laboriosam)");
+        console.log(elementos);
+
+        setTimeout(function() {}, 2000);
+        elementos.remove();
+
+    </script>
+
+</body>
+
+</html>
