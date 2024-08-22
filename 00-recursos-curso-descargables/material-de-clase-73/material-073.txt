@@ -1,0 +1,7 @@
+    <img
+    data-caman="brightness(10) contrast(30) sepia(60) saturation(-30)"
+    src="assets/img/test1_640.jpg">
+
+    <img id="img2" src="assets/img/test1_640.jpg">
+
+    <button type="button">Cambiar</button>

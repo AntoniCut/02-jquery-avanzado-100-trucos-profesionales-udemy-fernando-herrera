@@ -44,7 +44,8 @@
         numeros.sort( function( a, b ){
 
 
-          return parseInt( a.textContent ) > parseInt(b.textContent);
+          // return parseInt( a.textContent ) > parseInt(b.textContent);
+          return parseInt( a.textContent ) - parseInt(b.textContent);
 
         }).appendTo( numeros.parent()  );
 
