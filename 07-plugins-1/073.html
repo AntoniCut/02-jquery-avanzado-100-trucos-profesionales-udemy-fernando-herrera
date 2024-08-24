@@ -1,0 +1,119 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-1/073.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 073.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .botones {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        button {
+            margin-left: 100px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 073.html - Cortar, Escalar, Blur, Cambiar Colores y Mas Sobre Imagenes. </h1>
+        <hr>
+
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <img data-caman="brightness(10) contrast(30) sepia(60) saturation(-30)" src="asset/img/test1_640.jpg">
+
+        <div class="botones">
+            <button type="button" id="cambiar" class="btn btn-dark"> Cambiar </button>
+            <button type="button" id="reset" class="btn btn-info"> Reset </button>
+        </div>
+
+        <img id="img2" src="asset/img/test1_640.jpg">
+
+    </main>
+
+
+    <!-- ----------  Librería CamanJS  ----------   -->
+    <script src="asset/libs/caman.full.pack.js"> </script>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- Libreria momentjs  ----------   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+
+        $('#cambiar').on('click', function () {
+
+            Caman('#img2', function () {
+                this.brightness(10);
+                this.contrast(30);
+                this.sepia(60);
+                this.saturation(-30);
+                this.render();
+            });
+        });
+
+
+        $('#reset').on('click', function () {
+
+            Caman('#img2', function () {
+                this.reset();
+                this.render();
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

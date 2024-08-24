@@ -1,0 +1,113 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-1/066.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 066.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <!-- <link rel="stylesheet" href="./asset/css/bootstrap.min.css"> -->
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /*align-items: center; */
+            /* text-align: center; */
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        #mensaje {
+            font-size: 25px;
+            text-align: center;
+        }
+
+        button {
+            width: 150px;
+            height: 40px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 066.html - Usar Media Queries en jQuery / JavaScript. </h1>
+        <hr>
+
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main>
+
+        <div id="mensaje"> </div>
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- Plugins modernizr-custom.js  ----------   -->
+    <script src="asset/libs/modernizr-custom.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+        console.log('geolocation', Modernizr.geolocation);
+        console.log('canvas', Modernizr.canvas);
+        console.log('Fontface', Modernizr.fontface);
+        console.log('cssanimations', Modernizr.cssanimations);
+        console.log('borderradius', Modernizr.borderradius);
+        console.log('audio', Modernizr.audio);
+
+        console.log('MQ', Modernizr.mq);
+
+        const $mensaje = $("#mensaje");
+
+        if (Modernizr.mq('only screen and (max-width: 640px)')) {
+            console.log('Celular en modo portrait');
+            $mensaje.text('Celular en modo portrait');
+        } else if (Modernizr.mq('only screen and (max-width: 960px)')) {
+            console.log('Es una pantalla poco estrecha');
+            $mensaje.text('Es una pantalla poco estrecha');
+        } else {
+            console.log('Es una pantalla ancha');
+            $mensaje.text('Es una pantalla ancha');
+        }
+
+    </script>
+
+</body>
+
+</html>

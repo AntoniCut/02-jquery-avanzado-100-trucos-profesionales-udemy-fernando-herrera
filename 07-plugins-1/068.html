@@ -1,0 +1,152 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-1/068.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 068.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /*align-items: center; */
+            /* text-align: center; */
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        #div-notificaciones {
+            position: fixed;
+            top: 20px;
+            right: 0;
+        }
+
+        .notificacion {
+            width: 250px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(83, 17, 113);
+            color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cerrar {
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button {
+            margin-left: 100px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 068.html - Obtener Parametros de Elementos del DOM. </h1>
+        <hr>
+
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main>
+
+        <div id="div-notificaciones">
+
+            <!-- <div class="notificacion">
+                Antonio Cutillas
+                <a href=""> X </a>
+            </div> -->
+
+        </div>
+
+        <br> <br>
+
+        <button class="btn btn-primary"> Crear un Nuevo Elemento </button>
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- Plugins modernizr-custom.js  ----------   -->
+    <!-- <script src="asset/libs/modernizr-custom.js"> </script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+        const $divNotificaciones = $("#div-notificaciones");
+
+        //  -----  Click para crear la notificacion  -----
+        $('button').on('click', function () {
+            const rand = Math.round(Math.random() * 10);
+            const contenido = `
+                <div class="notificacion" data-numero="${rand}">
+                    Número Random: ${rand}
+                    <span class="cerrar"> X </span>
+                </div>
+            `;
+            $divNotificaciones.append(contenido);
+        });
+
+        //  -----  Click para obtener el atributo data-numero  -----
+        $divNotificaciones.on('click', '.notificacion', function () { 
+            const numero = $(this).data('numero');
+            console.log(numero);
+        });
+
+
+        //  -----  Click para animar y eliminar la notificacion  -----
+        $divNotificaciones.on('click', '.notificacion .cerrar', function (event) {
+            event.stopPropagation();  // Detiene la propagación del evento clic
+            
+            //$(this).closest('.notificacion').remove(); // Elimina solo la notificación específica
+            $(this).closest('.notificacion').slideUp(500, function() {
+                $(this).remove();
+            }); // Elimina solo la notificación específica
+        });
+
+
+    </script>
+
+</body>
+
+</html>

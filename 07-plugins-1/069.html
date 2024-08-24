@@ -1,0 +1,161 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-1/069.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 069.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            /*align-items: center; */
+            /* text-align: center; */
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        #div-notificaciones {
+            position: fixed;
+            top: 20px;
+            right: 0;
+        }
+
+        .notificacion {
+            width: 250px;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(83, 17, 113);
+            color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cerrar {
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button {
+            margin-left: 100px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 069.html - Un Complemento Perfecto para jQuery y JavaScript en General - Libreria Underscore. </h1>
+        <hr>
+
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main>
+
+
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  ----- Libreria underscore.js  ----------   -->
+    <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.7/underscore-umd-min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+    <!-- ----------  Código de jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------');
+
+
+        //  **********  Libreria Underscore  **********
+
+        //  ----------  ARREGLO  ----------
+        console.log('\n\n\n');
+        console.warn('*****  ARREGLO  ******');
+        const arr = [53, 6, 7, 6, 13, 77, -23, 55, 5, 404, 3, 2];
+
+        //  -----  Obtener Numeros Pares del Arreglo  -----
+        console.log('Numeros Pares: ', _.filter(arr, function (num) { return num % 2 === 0; }));
+
+        //  -----  Existe el numero 13Obtener Numeros Pares del Arreglo  -----
+        const num13 = _.contains(arr, 13);
+        if(num13) console.log('Numero 13 Existe')
+        else console.log('Numero 13 No Existe');
+
+        //  -----  Numero Mas Alto  -----
+        console.log('Numero Mas Alto: ', _.max(arr));
+
+        //  -----  Ordenar Arreglo  -----
+        console.log('Arreglo Ordenado: ', arr.sort( function(a, b) {return a- b}) );
+
+        //  -----  Desordenar Arreglo Aleatoriamente  -----
+        console.log('Desordenar Arreglo Aleatoriamente: ', _.shuffle(arr) );
+
+        //  -----  Arreglo con numeros unicos - No Repetidos  -----
+        console.log('Arreglo con Numeros No Repetidos: ', _.unique(arr) );
+
+
+        //  ----------  OBJETO  ----------
+        console.log('\n\n\n');
+        console.warn('*****  OBJETO  ******');
+
+        const obj = {
+            nombre: 'Antonio Cutillas',
+            edad: 30,
+            peso: '73kg',
+            colorOjos: 'Marrones'
+        };
+
+        //  -----  Imprimir Objeto  -----
+        console.log('Llaves', _.keys(obj));
+
+        //  -----  Imprimir Valores  -----
+        console.log('Valores', _.values(obj));
+
+        //  -----  Edad y Peso  -----
+        console.log('Edad y Peso = Pick', _.pick(obj, 'edad', 'peso'));
+
+        //  -----  Nº Elementos  -----
+        console.log('Nº Elementos', _.size(obj));
+        
+
+    </script>
+
+</body>
+
+</html>
