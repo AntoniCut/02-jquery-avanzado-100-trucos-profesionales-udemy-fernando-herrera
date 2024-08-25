@@ -1,0 +1,130 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-1/075.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 075.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .botones {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        button {
+            margin-left: 100px;
+        }
+
+        #colores {
+            width: 150px;
+            height: 150px;
+            /* background-color: red; */
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 075.html - Animar Colores. </h1>
+        <hr>
+
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente
+            creada.
+        </p>
+
+
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <div id="colores"> </div>
+        <button class="btn btn-primary"> Animar Color </button>
+
+    </main>
+
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Librería jQuery-Color  ----------   -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-color/2.1.2/jquery.color.min.js"
+        integrity="sha512-VjRpiWhUqdNa9bwBV7LnlG8CwsCVPenFyOQTSRTOGHw/tjtME96zthh0Vv9Itf3i8w4CkUrdYaS6+dAt1m1YXQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+
+        //  -----  Animate en jQuery No Soporta los colores por eso Importamos la Libreria 'jquery-color'  -----
+
+        const color = $.Color('#4a1f81');
+        console.log("\nColor Morado: ", color);
+
+        //  -----  Composicion del Color Morado  -----
+        console.log("Composicion del Color Morado.....");
+        console.log("Blue: ", color.blue());
+        console.log("green: ", color.green());
+        console.log("red: ", color.red());
+        
+
+        $('button').click(function () {
+
+            $('#colores')
+                .css({
+                    backgroundColor: 'white'
+                })
+                .animate({ backgroundColor: 'blue' }, 1000)
+                .animate({ backgroundColor: 'green' }, 1000)
+                .animate({ backgroundColor: 'red' }, 1000)
+                .animate({ backgroundColor: 'purple' }, 1000)
+                .animate({ backgroundColor: 'yellow' }, 1000)
+                .animate({ backgroundColor: 'white' }, 1000)
+        });
+
+
+    </script>
+
+</body>
+
+</html>
