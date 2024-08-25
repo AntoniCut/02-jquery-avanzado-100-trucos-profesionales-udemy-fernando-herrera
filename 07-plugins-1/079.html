@@ -1,0 +1,109 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-1/079.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 079.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Estilo del Boostrap 4 y Estilos CSS  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+    <!--  ----------  Libreria de Estilos Estilo sweetalert.css  ----------   -->
+    <link rel="stylesheet" href="./asset/css/sweetalert.css">
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/favicon.ico">
+
+
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        button {
+            margin-bottom: 100px;
+        }
+
+        #caja-azul {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+        <h1> 079.html - Notificaciones en el Area del Favicon. </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Librería favico.min.js  -----   -->
+    <script src="asset/libs/favico-0.3.10.min.js"> </script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+
+        const $titulo = $('title');
+        let contador = 0;
+
+        const favicon = new Favico({
+            animation: 'slide'
+        });
+
+        setInterval(function () {
+
+            contador++;
+            $titulo.text('(' + contador + ') jQuery Avanzado');
+
+            favicon.badge(contador);
+
+        }, 2000);
+
+        
+    </script>
+
+</body>
+
+</html>
