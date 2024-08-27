@@ -1,0 +1,165 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-2/083.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 083.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/favicon.ico">
+
+    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        button {
+            margin-bottom: 100px;
+        }
+
+        .foto-container {
+            position: relative;
+            width: 600px;
+            height: 600px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #foto1, #foto2 {
+            width: 100%;
+            height: 100%;
+        }
+
+        .cara {
+            position: absolute;
+            border: 2px solid white;
+        }
+
+        #btnLocalizadorCara {
+            width: 150px;
+            height: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 083.html - Detectar Rostros en jQuery. </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <div class="foto-container">
+            <img src="asset/img/Katy_Perry.jpg" id="foto1" class="foto">
+        </div>
+
+        <button class="btn btn-primary" id="btnLocalizarCara"> Localizar Cara </button>
+
+        <div class="foto-container">
+            <img src="asset/img/foto_fiesta.jpg" id="foto2" class="foto">
+        </div>
+
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Librería jquery-facedetection.min.js  -----   -->
+    <script src="asset/libs/jquery.facedetection.min.js"> </script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+        console.log("\n");
+
+        //  -----  Referencias al HTML  -----
+        const $foto1 = $("#foto1");
+        const $foto2 = $("#foto2");
+        const $botonLocCaras = $("#btnLocalizarCara");
+
+        const message = 'No Hay Foto o Fotos en la Web';
+
+
+        //  -----  Función que Detecta las Caras en las Imágenes  -----
+        function deteccionCaras( $foto ) {
+
+            $foto.faceDetection({
+
+                complete: function (caras) {
+
+                    console.log("Caras: ", caras);
+
+                    for (let i = 0; i < caras.length; i++) {
+
+                        const rostro = caras[i];
+                        console.log("Rostro " + (i + 1) + " : ", rostro);
+
+                        $('<div>', {
+                            'class': 'cara',
+                            'css': {
+                                'left': rostro.x * rostro.scaleX + 'px',
+                                'top': rostro.y * rostro.scaleY + 'px',
+                                'width': rostro.width * rostro.scaleX + 'px',
+                                'height': rostro.height * rostro.scaleY + 'px'
+                            }
+                        }).insertAfter(this);
+                    }
+                },
+
+                error: function (caras, message) {
+                    console.error(message);
+                }
+            });
+        }
+        
+        
+        //  -----  Click  -----
+        $botonLocCaras.on('click', function() {
+            deteccionCaras($foto1);
+            deteccionCaras($foto2);
+        });
+
+
+    </script>
+
+</body>
+
+</html>
