@@ -1,0 +1,148 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-2/086.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 086.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/favicon.ico">
+
+    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 100px;
+        }
+
+        button {
+            margin-bottom: 100px;
+        }
+
+        .item {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eeeeee;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 086.html - Convertir Inputs en Medidores (Knob). </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <input type="text" id="knob1" class="dial" value="23">
+
+        <div class="item">
+            <input type="text" id="knob2" value="23" data-width="150" data-cursor=true data-thickness=".5"
+                data-fgColor="#AAAAAA" data-bgColor="#FFFFFF" data-displayInput="true" + some code </div>
+
+
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Librería jquery.knob.min.js  -----   -->
+    <script src="asset/libs/jquery.knob.min.js"></script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+        console.log("\n");
+
+        //  -----  Referencias al HTML Botones  -----
+        const $knob1 = $("#knob1");
+        const $knob2 = $("#knob2");
+
+        $knob1.knob({
+            'min': 0,
+            'max': 1000
+        });
+        $knob1.val(150).trigger('change');
+
+
+        $knob2.knob({
+            'min': 0,
+            'max': 1000
+        });
+        $knob2.val(0).trigger('change');
+
+
+        /*  **********  Documentación del Plugin  **********
+
+            Behaviors
+                min : min value (default=0)
+                max : max value (default=100)
+                step : step size (default=1)
+                angleOffset : starting angle in degrees (default=0)
+                angleArc : arc size in degrees (default=360)
+                stopper : stop at min & max on keydown/mousewheel (default=true)
+                readOnly : disable input and events (default=false)
+                rotation : direction of progression (default=clockwise)
+
+            UI
+                cursor : display mode “cursor”, cursor size could be changed passing a numeric value to the option, default width is used when passing boolean value “true” (default=gauge)
+                thickness : gauge thickness
+                lineCap : gauge stroke endings (default=butt, round=rounded line endings)
+                width : dial width
+                height : dial height
+                displayInput : display input (default=true)
+                displayPrevious : displays the previous value with transparency (default=false)
+                fgColor : foreground color
+                inputColor : input value (number) color
+                font : font family
+                fontWeight : font weight
+                bgColor : background color
+
+        */
+
+
+    </script>
+
+</body>
+
+</html>

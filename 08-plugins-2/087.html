@@ -1,0 +1,128 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-2/087.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 087.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/favicon.ico">
+
+    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 100px;
+        }
+
+        button {
+            margin-bottom: 100px;
+        }
+
+        .item {
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eeeeee;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 087.html - Trabajar con Dinero y Monedas. </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Librería money.min.js  -----   -->
+    <script src="asset/libs/money-js/money.min.js"></script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+        console.log("\n");
+
+        //  ----------  API Key de 'Open Exchanges Race' de Money.js  ----------
+        //  66a58c76e2394a119cdcbb66c6f635bc
+
+        //  -----  Utilización de la Libreria MoneyJS  -----
+
+        console.warn("*****  Utilizando una Petición  *****")
+        $.get('https://openexchangerates.org/api/latest.json', { 
+            app_id: '66a58c76e2394a119cdcbb66c6f635bc' 
+        }, function (data) {
+            
+            //console.log("1 US Dollar equals " + data.rates.GBP + " British Pounds");
+            console.log(data);
+            fx.rates = data.rates ;
+            fx.bases = "USD";
+
+            console.log("Con Petición - 100 $ Son: ", fx(100).from('USD').to('EUR').toFixed(2) , " €");
+            console.log("Con Petición - 1 € Son: ", fx(1).from('EUR').to('USD').toFixed(2) , " $");
+        });
+
+
+        console.warn("*****  Utilizando un JSON  *****");
+        $.getJSON("asset/data/rates.json" , function (data) {
+            
+            //console.log("1 US Dollar equals " + data.rates.GBP + " British Pounds");
+            console.log(data);
+            fx.rates = data.rates ;
+            fx.bases = "USD";
+
+            console.log("Con JSON - 100 $ Son: ", fx(100).from('USD').to('EUR').toFixed(2) , " €");
+            console.log("Con JSON - 1 € Son: ", fx(1).from('EUR').to('USD').toFixed(2) , " $");
+        });
+
+
+    </script>
+
+</body>
+
+</html>

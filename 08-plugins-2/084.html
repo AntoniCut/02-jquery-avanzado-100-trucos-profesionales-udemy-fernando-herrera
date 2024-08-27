@@ -1,0 +1,143 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-2/084.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 084.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/favicon.ico">
+
+    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        button {
+            margin-bottom: 100px;
+        }
+
+        #foto {
+            width: 600px;
+            height: 600px;
+        }
+
+        .cara {
+            position: absolute;
+            border: 2px solid white;
+        }
+
+        #btnLocalizadorCara {
+            width: 150px;
+            height: 40px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 084.html - Disparar el Modo de Pantalla Completa. </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <button class="btn btn-primary" id="fullScreen"> Full Screen </button>
+        
+        <img src="asset/img/toni_fox.jpg" id="foto">
+        <button class="btn btn-primary" id="fullFoto"> Full Foto </button>
+        
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/AHdmvGW1oic?si=FG_J4rqhsvEw3fG8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <button class="btn btn-primary" id="btnIFrame"> Full IFrame </button>
+
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Librería bigscreen.min.js  -----   -->
+    <script src="asset/libs/bigscreen.min.js"> </script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+        console.log("\n");
+
+
+        //  -----  Referencias al HTML Botones  -----
+        const $fullScreen = $("#fullScreen");
+        const $fullFoto = $("#fullFoto");
+        const $btnIFrame = $("#btnIFrame");
+        
+        //  -----  Referencias al HTML Fotos y IFrames  -----
+        const $foto = $("#foto");
+        const $iFrame = $('iframe');
+        
+
+        $fullScreen.on('click' , function() {
+            BigScreen.toggle();     //  Pantalla Completa.
+        });
+
+
+        $fullFoto.on('click' , function() {
+            
+            console.log( $('img'));
+            console.log( $('#foto'));
+            
+            const element = $foto[0];
+            //  Utiliza un Objeto Sin Arreglo.
+            BigScreen.request(element);     //  Pantalla Completa.
+        });
+
+
+        $btnIFrame.on('click' , function() {
+            
+            console.log( $('iframe'));
+                        
+            const element = $iFrame[0];
+            BigScreen.request(element);     //  Pantalla Completa.
+        });
+                
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/07-plugins-2/085.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 085.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/favicon.ico">
+
+    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  ----------   -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
+
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        button {
+            margin-bottom: 100px;
+        }
+
+        .tarjetas {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .tarjeta {
+            width: 200px;
+            margin-bottom: 10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .x1 {
+            height: 100px;
+            line-height: 100px;
+            background-color: rgb(17, 65, 66)
+        }
+
+        .x2 {
+            height: 200px;
+            line-height: 200px;
+            background-color: rgb(36, 13, 93)
+        }
+
+        .x3 {
+            height: 300px;
+            line-height: 300px;
+            background-color: rgb(72, 6, 75)
+        }
+
+        .x4 {
+            height: 400px;
+            line-height: 400px;
+            background-color: rgb(117, 48, 3)
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 085.html - Sistema de Grid Tipo Pinterest. </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <div class="tarjetas">
+
+            <!-- <div class="tarjeta x1"> </div>
+            <div class="tarjeta x2"> </div>
+            <div class="tarjeta x3"> </div>
+            <div class="tarjeta x4"> </div> -->
+
+        </div>
+        
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- ----------  Librería masonry.pkgd.min.js  -----   -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+        console.log("\n");
+
+        //  -----  Referencias al HTML Botones  -----
+        const $tarjetas = $(".tarjetas");
+        
+        //  -----  Definicion de Variables y Arreglos  -----
+        const arrElem = [];
+
+
+        for(let i=0; i<=50; i++) {
+
+            const random = Math.round( (Math.random() * 3) + 1 );
+            console.log("Random " + (i + 1) + " 0 ", random);
+
+            const clase = 'x' + random;
+            console.log(clase);
+
+            arrElem.push(`<div class="tarjeta ${clase}"> Tarjeta ${i + 1} </div>`)
+        }
+
+        $tarjetas.append(arrElem);
+
+        //  -----  Utilización del Plugin de Masonry  -----
+        $tarjetas.masonry({
+            itemSelector: '.tarjeta'
+        });
+
+
+    </script>
+
+</body>
+
+</html>
