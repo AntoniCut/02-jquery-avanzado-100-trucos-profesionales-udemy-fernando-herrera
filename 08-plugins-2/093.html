@@ -1,0 +1,146 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/093.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 093.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/favicon.ico">
+
+    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  -----   -->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 50px;
+        }
+
+        button {
+            margin-bottom: 100px;
+        }
+
+        canvas {
+            width: 25%;
+            height: 60vh;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!--  **********  Header o Cabecera  **********  -->
+    <header class="header">
+
+        <h1> 093.html - Filtro de Instagran Usando JavaScript. </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <!--  **********  Contenido  **********  -->
+    <main class="main">
+
+        <select id="filtros" class="form-control w-25">
+            <option>Seleccione el filtro</option>
+            <option value="vintage">Vintage</option>
+            <option value="lomo">Lomo</option>
+            <option value="clarity">Clarity</option>
+            <option value="sinCity">Sin City</option>
+            <option value="sunrise">Sunrise</option>
+            <option value="crossProcess">Cross Process</option>
+            <option value="orangePeel">Orange Peel</option>
+            <option value="love">Love</option>
+            <option value="grungy">Grungy</option>
+            <option value="jarques">Jarques</option>
+            <option value="pinhole">Pinhole</option>
+            <option value="oldBoot">Old Boot</option>
+            <option value="glowingSun">Glowing Sun</option>
+            <option value="hazyDays">Hazy Days</option>
+            <option value="herMajesty">Her Majesty</option>
+            <option value="nostalgia">Nostalgia</option>
+            <option value="hemingway">Hemingway</option>
+            <option value="concentrate">Concentrate</option>
+        </select>
+
+
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
+
+    <!-- ----------  Librería camanJS  -----   -->
+    <script src="asset/libs/caman.full.pack.js"> </script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+        console.log("\n");
+
+
+        //  -----  Utilización de camanJS para Filtros como Instagram  -----
+
+        //  -----  Referencias al HTML  -----
+        const $dropDown = $("#filtros");
+        let $canvas = $();
+
+        //  -----  Evento 'change'  -----
+        $dropDown.change(function () {
+
+            //  -----  Creamos Dinamicamente un Area de Canvas para trabajar con la imagen  -----
+            const tmp = $('<canvas>').insertAfter($dropDown).hide();
+            console.log("tmp: ", tmp);
+
+            //  -----  Valor seleccionado  -----
+            //const filtro = $(this).val();
+            const filtro = this.value;
+            console.log("filtro: ", filtro);
+
+            //  -----  Plugin Caman  -----
+            Caman(tmp[0], 'asset/img/Katy_Perry.jpg', function () {
+
+                $canvas.remove();
+                $canvas = tmp.show();
+
+                //  -----  Si Existe en el Objeto esa propiedad this  --  Aplicamos el Filtro
+                if (filtro in this) this[filtro]().render();
+
+            });
+        });
+
+        //  -----  al cargar la página  -----
+        $dropDown.trigger('change');
+
+    </script>
+
+</body>
+
+</html>

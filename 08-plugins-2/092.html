@@ -1,5 +1,5 @@
 <!--  ***********************************************************************  -->
-<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/080.html  **********  -->
+<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/092.html  **********  -->
 <!--  ***********************************************************************  -->
 
 
@@ -8,14 +8,16 @@
 
 <head>
     <meta charset="utf-8">
-    <title> 080.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
-    
+    <title> 092.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
     <!--  ----------  Favicon  ----------  -->
     <link rel="icon" href="asset/img/favicon.ico">
 
-    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  -----  chosen.min.css  ----------   -->
-    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./asset/libs/chosen/chosen.min.css">
+    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  -----  twentytwenty  ----------   -->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    <link rel="stylesheet" href="asset/libs/twentytwenty/css/twentytwenty.css">
+
+
 
     <style>
         .header {
@@ -32,29 +34,34 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
             text-align: center;
             margin-top: 20px;
-            gap: 20px;
+            gap: 100px;
         }
 
         button {
             margin-bottom: 100px;
         }
 
-        #selector {
-            width: 300px;
+        .twentytwenty-container-horizontal,
+        .twentytwenty-container-vertical{
+            width: 800px;
+            height: 600px;
         }
+
     </style>
 
 </head>
+
 
 <body>
 
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
-        <h1> 080.html - Mejores Selectores Usando Chosen. </h1>
+
+        <h1> 092.html - Resaltar Diferencias entre 2 Imágenes. </h1>
         <hr>
         <p id="parrafo" class="ipsum">
             Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
@@ -65,20 +72,25 @@
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <select id="selector">
-            <option value="php"> php </option>
-            <option value="jquery"> jquery </option>
-            <option value="angular"> angular </option>
-            <option value="python"> python </option>
-            <option value="ruby"> ruby </option>
-        </select>
+        <div class="twentytwenty-container-horizontal">
+            <img src="asset/img/1_1.jpg" />
+            <img src="asset/img/1_2.jpg" />
+        </div>
+
+        <div class="twentytwenty-container-vertical">
+            <img src="asset/img/1_1.jpg" />
+            <img src="asset/img/1_2.jpg" />
+        </div>
+
+
     </main>
 
     <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
 
-    <!-- ----------  Librería chosen.jquery.js  -----   -->
-    <script src="asset/libs/chosen/chosen.jquery.js"> </script>
+    <!-- ----------  Librería twentytwenty.js y event.mouse.js  -----   -->
+    <script src="asset/libs/twentytwenty/js/jquery.twentytwenty.js"> </script>
+    <script src="asset/libs/twentytwenty/js/jquery.event.move.js"> </script>
 
 
     <!-- ----------  Código jQuery  ----------   -->
@@ -87,15 +99,16 @@
         console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
         console.log("\n");
 
-        const $select = $("#selector");
 
-        $select.chosen();
+        //  -----  Utilización de twentytwenty  -----
 
-        $select.on('change', function() {
-            console.log("Valor del Select: ", $(this).val());
-        })
-        
-        
+        $(function () {
+
+            $(".twentytwenty-container-horizontal").twentytwenty({ default_offset_pct: 0.5 });
+            $(".twentytwenty-container-vertical").twentytwenty({ default_offset_pct: 0.5, orientation: 'vertical' });
+        });
+
+
     </script>
 
 </body>

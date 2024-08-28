@@ -1,5 +1,5 @@
 <!--  ***********************************************************************  -->
-<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/081.html  **********  -->
+<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/088.html  **********  -->
 <!--  ***********************************************************************  -->
 
 
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> 081.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+    <title> 088.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
 
     <!--  ----------  Favicon  ----------  -->
     <link rel="icon" href="asset/img/favicon.ico">
@@ -30,31 +30,38 @@
 
         .main {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
             text-align: center;
             margin-top: 20px;
-            gap: 20px;
+            gap: 100px;
         }
 
         button {
             margin-bottom: 100px;
         }
 
-        #selector {
-            width: 300px;
+        #mapa {
+            width: 80%;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: red;
         }
     </style>
 
 </head>
 
+
 <body>
 
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
-        <h1> 081.html - Aplicar un Blur a los Elementos de la Página. </h1>
+
+        <h1> 088.html - Uso de GoogleMaps de una Forma Simple. </h1>
         <hr>
         <p id="parrafo" class="ipsum">
             Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
@@ -65,33 +72,19 @@
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <p id="parrafo" class="ipsum parrafo-main">
-            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
-            completamente creada.
-        </p>
+        <div id="mapa"> </div>
 
-        <p id="parrafo" class="ipsum parrafo-main">
-            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
-            completamente creada.
-        </p>
-
-        <p id="parrafo" class="ipsum parrafo-main">
-            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
-            completamente creada.
-        </p>
-
-        <p id="parrafo" class="ipsum parrafo-main">
-            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
-            completamente creada.
-        </p>
 
     </main>
 
     <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
 
-    <!-- ----------  Librería blur.js  -----   -->
-    <script src="asset/libs/blur.js"> </script>
+    <!-- ----------  API de Google Map  -----   -->
+    <script src="https://maps.google.com/maps/api/js?sensor=true"> </script>
+
+    <!-- ----------  Librería gmap.min.js  -----   -->
+    <script src="asset/libs/gmaps.js"> </script>
 
 
     <!-- ----------  Código jQuery  ----------   -->
@@ -100,18 +93,30 @@
         console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
         console.log("\n");
 
-        const $parrafosMain = $("p.parrafo-main");
 
-        $parrafosMain.blurjs({
-            customClass: 'blurjs',
-            radius: 5,
-            persist: false
+        //  -----  Utilización de GMapsJS  -----
+        const map = new GMaps({
+
+            div: '#mapa',
+            lat: -12.043333,
+            lng: -77.028333
         });
 
-        setTimeout(function() {
-            $.blurjs('reset');
-        }, 4000);
-
+        map.addMarker({
+            lat: -12.043333,
+            lng: -77.028333,
+            title: 'Lima',
+            click: function (e) {
+                alert('Hiziste click en este marcador!!!');
+            },
+            infoWindow: {
+                content: '<p> Ubicacion </p>'
+            },
+            click: function (e) {
+                alert('You clicked in this marker');
+            }
+        });
+        
 
     </script>
 

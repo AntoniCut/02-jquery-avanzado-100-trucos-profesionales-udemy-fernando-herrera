@@ -1,5 +1,5 @@
 <!--  ***********************************************************************  -->
-<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/081.html  **********  -->
+<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/095.html  **********  -->
 <!--  ***********************************************************************  -->
 
 
@@ -8,14 +8,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title> 081.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+    <title> 095.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
 
     <!--  ----------  Favicon  ----------  -->
-    <link rel="icon" href="asset/img/favicon.ico">
+    <link rel="icon" href="asset/img/icon-jquery.png">
 
-    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  ----------   -->
-    <link rel="stylesheet" href="./asset/css/bootstrap.min.css">
-
+    <!--  ----------  Librerias de Estilos  -----  Boostrap 4  -----   -->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
 
     <style>
         .header {
@@ -32,29 +31,27 @@
             display: flex;
             flex-direction: column;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
             text-align: center;
             margin-top: 20px;
-            gap: 20px;
+            gap: 50px;
         }
 
         button {
             margin-bottom: 100px;
         }
-
-        #selector {
-            width: 300px;
-        }
     </style>
 
 </head>
+
 
 <body>
 
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
-        <h1> 081.html - Aplicar un Blur a los Elementos de la Página. </h1>
+
+        <h1> 095.html - Ajustes de Texto en la Web. </h1>
         <hr>
         <p id="parrafo" class="ipsum">
             Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
@@ -65,33 +62,19 @@
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <p id="parrafo" class="ipsum parrafo-main">
+        <p id="parrafoFitText" class="ipsum">
             Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
             completamente creada.
         </p>
 
-        <p id="parrafo" class="ipsum parrafo-main">
-            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
-            completamente creada.
-        </p>
-
-        <p id="parrafo" class="ipsum parrafo-main">
-            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
-            completamente creada.
-        </p>
-
-        <p id="parrafo" class="ipsum parrafo-main">
-            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
-            completamente creada.
-        </p>
 
     </main>
 
     <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
 
-    <!-- ----------  Librería blur.js  -----   -->
-    <script src="asset/libs/blur.js"> </script>
+    <!-- ----------  Librería jquery.fittext.js  -----   -->
+    <script src="asset/libs/jquery.fittext.js"> </script>
 
 
     <!-- ----------  Código jQuery  ----------   -->
@@ -100,17 +83,13 @@
         console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
         console.log("\n");
 
-        const $parrafosMain = $("p.parrafo-main");
 
-        $parrafosMain.blurjs({
-            customClass: 'blurjs',
-            radius: 5,
-            persist: false
-        });
+        //  **********  Utilización del jquery.fittext.js  **********
 
-        setTimeout(function() {
-            $.blurjs('reset');
-        }, 4000);
+        //$("p").fitText();
+        //$("#parrafoFitText").fitText(1.2, { minFontSize: '20px', maxFontSize: '40px' });
+
+        $("#parrafoFitText").fitText(1.2);
 
 
     </script>
