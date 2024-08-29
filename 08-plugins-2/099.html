@@ -1,0 +1,113 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/099.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 099.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/icon-jquery.png">
+
+    <!--  -----  Importación  -----  Boostrap 4  -----  -->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        #rumble {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <h1> 099.html - Hacer Vibrar Elementos para Énfasis. </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <div id="rumble"> </div>
+
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
+
+    <!--  ----------  Libreria jRumbleJS  ----------  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jrumble/1.3.0/jquery.jrumble.min.js"
+        integrity="sha512-0vcUK0oQ15FtIrg1bbNL6zO2yB0pSZjPZERBNA0ZXIw/7jsSHu+rxxbpbM20wIaiEofTK9oPoP/Y8xvh3qoasQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+
+
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+        console.log("\n");
+
+
+        //  **********  Utilización del DropZoneJS  **********
+
+        //  -----  Referencias al HTML  -----
+        $jRumble = $('#rumble');
+        $body = $('body')
+
+        const elemento = $body.jrumble({
+            x: 10,
+            y: 10,
+            rotation: 4
+        });
+
+
+        elemento.trigger('startRumble');
+            
+
+        setTimeout(function () {
+            elemento.trigger('stopRumble');
+        }, 3000);
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!--  ***********************************************************************  -->
+<!--  **********  /02-curso-jquery-avanzado/08-plugins-2/098.html  **********  -->
+<!--  ***********************************************************************  -->
+
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title> 098.html - jQuery Avanzado - Udemy - Fernando Herrera </title>
+
+    <!--  ----------  Favicon  ----------  -->
+    <link rel="icon" href="asset/img/icon-jquery.png">
+    
+    <!--  -----  Importación  -----  Boostrap 4  -----  -->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css">
+    
+    <style>
+        .header {
+            width: 100%;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
+
+        .drop {
+            width: 80%;
+            border: 2px dotted blue;
+            padding: 30px;
+        }
+
+        .dz-error-message {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <h1> 098.html - Manejar un Drag & Drop. </h1>
+        <hr>
+        <p id="parrafo" class="ipsum">
+            Normalmente, desearemos manipular el DOM (Document Object Model), cuando la página este lista y
+            completamente creada.
+        </p>
+    </header>
+
+    <main class="main">
+
+        <div class="drop">
+            Deje caer archivos aquí
+        </div>
+
+    </main>
+
+    <!-- ----------  Librería de jQuery - CDN de Google  -----   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
+
+    <!--  ----------  Libreria DropzoneJS  ----------  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.js"></script>
+
+    
+    <!-- ----------  Código jQuery  ----------   -->
+    <script>
+
+        console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
+        console.log("\n");
+
+
+        //  **********  Utilización del DropZoneJS  **********
+
+        //  -----  Referencias al HTML  -----
+        $drop = $('.drop');
+        
+        $(".drop").dropzone({
+            url: "/path/to/post"
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
